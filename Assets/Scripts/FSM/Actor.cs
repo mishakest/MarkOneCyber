@@ -6,13 +6,22 @@ using UnityEngine;
 #pragma warning disable 0649
 public class Actor : MonoBehaviour
 {
+    #region [CHECKS]
+
     [SerializeField] private Transform _groundCheck;
+
+    #endregion
+    #region [FSM]
 
     public ActorData Data;
     public StateMachine StateMachine { get; private set; }
+
+    #endregion
+    #region [MONOCOPMONENTS]
     public InputHandler InputHandler { get; private set; }
 
-    #region States
+    #endregion
+    #region [STATES]
 
     public RunState RunState { get; private set; }
     public JumpState JumpState { get; private set; }
@@ -21,18 +30,19 @@ public class Actor : MonoBehaviour
     public DeathState DeathState { get; private set; }
 
     #endregion
+    #region [CHARACTERSETUP]
 
     public Character Character;
     public CharacterCollider Collider;
 
+    #endregion
 
     public Lane CurrentLane { get; set; }
-    public float LaneOffset { get; private set; }
-
     public Vector3 TargetPosition { get; set; }
 
     public bool IsAlive { get; private set; }
 
+    #region [UNITY CALLBACK]
     private void Awake()
     {
         StateMachine = new StateMachine();
@@ -56,8 +66,6 @@ public class Actor : MonoBehaviour
 
         InputHandler = GetComponent<InputHandler>();
         StateMachine.Init(RunState);
-
-        LaneOffset = TrackProcessor.Instance.LaneOffset;
     }
 
     private void Update()
@@ -70,22 +78,24 @@ public class Actor : MonoBehaviour
         StateMachine.CurrentState.PhysicsTick();
     }
 
+    #endregion
+
+    #region [METHODS]
     private void InitState(State state, string animationName)
     {
         state.Init(this, Data, StateMachine, animationName);
     }
 
-    internal void ApplyWaringDamage()
+    public void ApplyWaringDamage()
     {
         throw new NotImplementedException();
     }
 
-
-    //todo: maybe should change it to raycast
     public bool CheckIfTouchingGround()
     {
         var info = Physics.OverlapSphere(_groundCheck.position, Data.GroundCheckRadius, Data.WhatIsGround);
 
         return info.Length > 0;
     }
+    #endregion
 }
