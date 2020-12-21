@@ -38,8 +38,6 @@ public class Actor : MonoBehaviour
     #endregion
 
     public Lane CurrentLane { get; set; }
-    public Vector3 TargetPosition { get; set; }
-
     public bool IsAlive { get; private set; }
 
     #region [UNITY CALLBACK]
@@ -97,5 +95,6 @@ public class Actor : MonoBehaviour
 
         return info.Length > 0;
     }
+
     #endregion
 }

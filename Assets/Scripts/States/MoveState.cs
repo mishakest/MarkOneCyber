@@ -3,6 +3,7 @@
 public class MoveState : State
 {
     protected bool isTouchingGround;
+    private Vector3 _targetPosition;
 
     public override void Tick()
     {
@@ -38,12 +39,12 @@ public class MoveState : State
         }
 
         actor.CurrentLane = targetLane;
-        actor.TargetPosition = Vector3.right * ((int)actor.CurrentLane - 1) * TrackProcessor.Instance.LaneOffset;
+        _targetPosition = Vector3.right * ((int)actor.CurrentLane - 1) * TrackProcessor.Instance.LaneOffset;
     }
 
     private void PeformMovment()
     {
-        actor.transform.localPosition = Vector3.MoveTowards(actor.transform.localPosition, actor.TargetPosition, actor.Data.LaneChangeSpeed * Time.deltaTime);
+        actor.transform.localPosition = Vector3.MoveTowards(actor.transform.localPosition, _targetPosition, actor.Data.LaneChangeSpeed * Time.deltaTime);
     }
 }
 
