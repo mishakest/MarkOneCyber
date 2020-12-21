@@ -5,7 +5,6 @@ using System;
 
 public class SwipeDetector : MonoBehaviour
 {
-    //todo: = delegate {}
     public static event Action<SwipeData> OnSwipe;
 
     private Vector2 fingerDownPosition;
