@@ -3,6 +3,7 @@
 public class MoveState : State
 {
     protected bool isTouchingGround;
+    protected bool isTouchingCeiling;
 
     protected float movementInput;
     protected bool jumpInput;
@@ -36,6 +37,7 @@ public class MoveState : State
         base.DoChecks();
 
         isTouchingGround = actor.CheckIfTouchingGround();
+        isTouchingCeiling = actor.CheckSpaceAbove();
     }
 
     private void ChangeLane(int direction)

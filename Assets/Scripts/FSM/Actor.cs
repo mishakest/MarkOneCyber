@@ -11,6 +11,7 @@ public class Actor : MonoBehaviour
     [Header("Checks")]
 
     [SerializeField] private Transform _groundCheck;
+    [SerializeField] private Transform _ceilingCheck;
 
     #endregion
     #region [FSM]
@@ -20,7 +21,7 @@ public class Actor : MonoBehaviour
     public StateMachine StateMachine { get; private set; }
 
     #endregion
-    #region [MONOCOPMONENTS]
+    #region [MONO COPMONENTS]
     public InputHandler InputHandler { get; private set; }
 
     #endregion
@@ -32,7 +33,7 @@ public class Actor : MonoBehaviour
     public DeathState DeathState { get; private set; }
 
     #endregion
-    #region [CHARACTERSETUP]
+    #region [CHARACTER SETUP]
 
     public Character Character { get; private set; }
 
@@ -77,7 +78,7 @@ public class Actor : MonoBehaviour
     }
 
     #endregion
-    #region [METHODS]
+    #region [OTHER METHODS]
 
     public void ApplyWaringDamage()
     {
@@ -87,6 +88,13 @@ public class Actor : MonoBehaviour
     public bool CheckIfTouchingGround()
     {
         var info = Physics.OverlapSphere(_groundCheck.position, Data.GroundCheckRadius, Data.WhatIsGround);
+
+        return info.Length > 0;
+    }
+
+    public bool CheckSpaceAbove()
+    {
+        var info = Physics.OverlapSphere(_ceilingCheck.position, Data.GroundCheckRadius, Data.WhatIsCeiling);
 
         return info.Length > 0;
     }

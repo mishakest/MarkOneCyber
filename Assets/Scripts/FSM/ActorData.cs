@@ -20,4 +20,7 @@ public class ActorData : ScriptableObject
     public float GroundCheckRadius;
     public LayerMask WhatIsGround;
 
+    public float CeilimgCheckRayDistance;
+    public LayerMask WhatIsCeiling;
+
 }

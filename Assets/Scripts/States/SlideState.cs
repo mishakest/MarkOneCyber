@@ -20,7 +20,8 @@ public class SlideState : MoveState
     {
         base.Tick();
 
-        if (Time.time >= startTime + data.MaxSlideTime)
+        //todo: make sure that you need it. Player can slide too lately, and this check for touching ceiling can safe himself
+        if (Time.time >= startTime + data.MaxSlideTime && !isTouchingCeiling)
         {
             stateMachine.ChangeState(actor.RunState);
         }
