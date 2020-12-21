@@ -8,11 +8,14 @@ public class Actor : MonoBehaviour
 {
     #region [CHECKS]
 
+    [Header("Checks")]
+
     [SerializeField] private Transform _groundCheck;
 
     #endregion
     #region [FSM]
 
+    [Header("Data")]
     public ActorData Data;
     public StateMachine StateMachine { get; private set; }
 
@@ -32,6 +35,8 @@ public class Actor : MonoBehaviour
     #region [CHARACTERSETUP]
 
     public Character Character { get; private set; }
+
+    [Header("Collider")]
     public CharacterCollider Collider;
 
     #endregion
