@@ -47,15 +47,10 @@ public class Actor : MonoBehaviour
 
         CurrentLane = Lane.Middle;
 
-        JumpState = new JumpState();
-        SlideState = new SlideState();
-        DeathState = new DeathState();
-        RunState = new RunState();
-
-        InitState(JumpState, "jump");
-        InitState(SlideState, "slide");
-        InitState(DeathState, "death");
-        InitState(RunState, "run");
+        JumpState = new JumpState(this, Data, StateMachine, "jump");
+        SlideState = new SlideState(this, Data, StateMachine, "slide");
+        DeathState = new DeathState(this, Data, StateMachine, "death");
+        RunState = new RunState(this, Data, StateMachine, "run");
     }
 
     private void Start()
@@ -79,10 +74,6 @@ public class Actor : MonoBehaviour
     #endregion
 
     #region [METHODS]
-    private void InitState(State state, string animationName)
-    {
-        state.Init(this, Data, StateMachine, animationName);
-    }
 
     public void ApplyWaringDamage()
     {

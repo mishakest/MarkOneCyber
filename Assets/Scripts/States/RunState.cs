@@ -2,6 +2,10 @@
 
 public class RunState : MoveState
 {
+    public RunState(Actor actor, ActorData data, StateMachine stateMachine, string animationName) : base(actor, data, stateMachine, animationName)
+    {
+    }
+
     public override void Tick()
     {
         base.Tick();

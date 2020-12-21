@@ -5,6 +5,10 @@ public class MoveState : State
     protected bool isTouchingGround;
     private Vector3 _targetPosition;
 
+    public MoveState(Actor actor, ActorData data, StateMachine stateMachine, string animationName) : base(actor, data, stateMachine, animationName)
+    {
+    }
+
     public override void Tick()
     {
         base.Tick();
