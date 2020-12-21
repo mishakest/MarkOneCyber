@@ -15,11 +15,18 @@ public class SlideState :MoveState
 
         actor.InputHandler.UseSlideInput();
         actor.Collider.SetColliderHeight(data.SlideColliderHeight);
+
     }
 
     public override void Tick()
     {
         base.Tick();
+
+        if (!isTouchingGround)
+        {
+            actor.Collider.SetVelocity(Vector3.down * data.JumpToSlideSpeed);
+            startTime = Time.time;
+        }
 
         //todo: make sure that you need it. Player can slide too lately, and this check for touching ceiling can safe himself
         if (Time.time >= startTime + data.MaxSlideTime && !isTouchingCeiling)
