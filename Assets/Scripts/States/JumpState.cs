@@ -22,7 +22,7 @@ public class JumpState : MoveState
         {
             stateMachine.ChangeState(actor.RunState);
         }
-        else if (actor.InputHandler.SlideInput)
+        else if (slideInput)
         {
             stateMachine.ChangeState(actor.SlideState);
         }

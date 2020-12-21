@@ -21,9 +21,8 @@ public class CharacterCollider : MonoBehaviour
     public void SetColliderHeight(float height)
     {
         var center = _collider.center;
-        center.y += (height = _collider.radius) / 2;
+        center.y += (height - _collider.height) / 2;
         _collider.center = center;
-
-        _collider.radius = height;
+        _collider.height = height;
     }
 }

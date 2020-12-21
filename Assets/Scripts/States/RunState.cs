@@ -10,11 +10,11 @@ public class RunState : MoveState
     {
         base.Tick();
 
-        if (actor.InputHandler.JumpInput && isTouchingGround)
+        if (jumpInput && isTouchingGround)
         {
             stateMachine.ChangeState(actor.JumpState);
         }
-        else if (actor.InputHandler.SlideInput)
+        else if (slideInput)
         {
             stateMachine.ChangeState(actor.SlideState);
         }

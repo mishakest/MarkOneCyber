@@ -12,6 +12,7 @@ public class ActorData : ScriptableObject
     public float JumpForce;
 
     [Header("Slide")]
+    public float MaxSlideTime;
     public float StandColliderHeight;
     public float SlideColliderHeight;
 

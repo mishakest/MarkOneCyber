@@ -3,6 +3,11 @@
 public class MoveState : State
 {
     protected bool isTouchingGround;
+
+    protected float movementInput;
+    protected bool jumpInput;
+    protected bool slideInput;
+
     private Vector3 _targetPosition;
 
     public MoveState(Actor actor, ActorData data, StateMachine stateMachine, string animationName) : base(actor, data, stateMachine, animationName)
@@ -13,14 +18,15 @@ public class MoveState : State
     {
         base.Tick();
 
+        movementInput = actor.InputHandler.MovementInput;
+        jumpInput = actor.InputHandler.JumpInput;
+        slideInput = actor.InputHandler.SlideInput;
 
         PeformMovment();
 
-        var input = actor.InputHandler.MovementInput;
-
-        if (input != 0.0f)
+        if (movementInput != 0.0f)
         {
-            ChangeLane((int)input);
+            ChangeLane((int)movementInput);
             actor.InputHandler.UseMovementInput();
         }
     }

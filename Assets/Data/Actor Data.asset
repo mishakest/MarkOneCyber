@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LaneChangeSpeed: 10
   JumpForce: 10
+  MaxSlideTime: 0
+  StandColliderHeight: 1.9
+  SlideColliderHeight: 1
   GroundCheckRadius: 0.2
   WhatIsGround:
     serializedVersion: 2
