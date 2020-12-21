@@ -85,6 +85,39 @@
                     "action": "Move Left/Right",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "Mobile",
+                    "id": "fe6b08cc-f556-40ab-af33-5464fb147b0c",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Left/Right",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "0806108d-3ef5-4373-80ff-7f4ff98e5c42",
+                    "path": "<Touchscreen>/delta/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mobile",
+                    "action": "Move Left/Right",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a55c2cc9-9c4c-40f7-9cf7-3af5bd3b348f",
+                    "path": "<Touchscreen>/delta/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mobile",
+                    "action": "Move Left/Right",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
@@ -96,6 +129,17 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Mobile",
+            "bindingGroup": "Mobile",
+            "devices": [
+                {
+                    "devicePath": "<Touchscreen>",
                     "isOptional": false,
                     "isOR": false
                 }
