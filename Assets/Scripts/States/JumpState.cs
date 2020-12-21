@@ -30,6 +30,6 @@ public class JumpState : MoveState
 
     private void Jump()
     {
-        actor.Collider.Rigidbody.AddForce(Vector3.up * data.JumpForce, ForceMode.Impulse);
+        actor.Collider.AddForce(Vector3.up * data.JumpForce, ForceMode.Impulse);
     }
 }

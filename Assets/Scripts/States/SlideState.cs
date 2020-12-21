@@ -12,5 +12,6 @@ public class SlideState : MoveState
 
         Debug.Log("Enter Slide State");
         actor.InputHandler.UseSlideInput();
+        actor.Collider.SetColliderHeight(data.SlideColliderHeight);
     }
 }
