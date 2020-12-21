@@ -6,48 +6,58 @@ using UnityEngine;
 #pragma warning disable 0649
 public class Actor : MonoBehaviour
 {
-    [SerializeField] private Transform _groundCheck;
+    #region [CHECKS]
 
+    [Header("Checks")]
+
+    [SerializeField] private Transform _groundCheck;
+    [SerializeField] private Transform _ceilingCheck;
+
+    #endregion
+    #region [FSM]
+
+    [Header("Data")]
     public ActorData Data;
     public StateMachine StateMachine { get; private set; }
+
+    #endregion
+    #region [MONO COPMONENTS]
     public InputHandler InputHandler { get; private set; }
 
-    #region States
+    #endregion
+    #region [STATES]
 
     public RunState RunState { get; private set; }
     public JumpState JumpState { get; private set; }
-
     public SlideState SlideState { get; private set; }
     public DeathState DeathState { get; private set; }
 
     #endregion
+    #region [CHARACTER SETUP]
 
-    public Character Character;
+    public Character Character { get; private set; }
+
+    [Header("Collider")]
     public CharacterCollider Collider;
 
+    #endregion
 
-    public Lane CurrentLane { get; set; }
-    public float LaneOffset { get; private set; }
-
+    public float LaneOffset { get; set; }
     public Vector3 TargetPosition { get; set; }
-
+    public Lane CurrentLane { get; set; }
     public bool IsAlive { get; private set; }
 
+    #region [UNITY CALLBACK]
     private void Awake()
     {
         StateMachine = new StateMachine();
 
         CurrentLane = Lane.Middle;
 
-        JumpState = new JumpState();
-        SlideState = new SlideState();
-        DeathState = new DeathState();
-        RunState = new RunState();
-
-        InitState(JumpState, "jump");
-        InitState(SlideState, "slide");
-        InitState(DeathState, "death");
-        InitState(RunState, "run");
+        JumpState = new JumpState(this, Data, StateMachine, "jump");
+        SlideState = new SlideState(this, Data, StateMachine, "slide");
+        DeathState = new DeathState(this, Data, StateMachine, "death");
+        RunState = new RunState(this, Data, StateMachine, "run");
     }
 
     private void Start()
@@ -55,14 +65,15 @@ public class Actor : MonoBehaviour
         IsAlive = true;
 
         InputHandler = GetComponent<InputHandler>();
+        Character = Collider.GetComponentInChildren<Character>();
         StateMachine.Init(RunState);
-
-        LaneOffset = TrackProcessor.Instance.LaneOffset;
     }
 
     private void Update()
     {
         StateMachine.CurrentState.Tick();
+
+        Debug.Log(CurrentLane.ToString());
     }
 
     private void FixedUpdate()
@@ -70,22 +81,27 @@ public class Actor : MonoBehaviour
         StateMachine.CurrentState.PhysicsTick();
     }
 
-    private void InitState(State state, string animationName)
-    {
-        state.Init(this, Data, StateMachine, animationName);
-    }
+    #endregion
+    #region [OTHER METHODS]
 
-    internal void ApplyWaringDamage()
+    public void ApplyWaringDamage()
     {
         throw new NotImplementedException();
     }
 
-
-    //todo: maybe should change it to raycast
     public bool CheckIfTouchingGround()
     {
         var info = Physics.OverlapSphere(_groundCheck.position, Data.GroundCheckRadius, Data.WhatIsGround);
 
         return info.Length > 0;
     }
+
+    public bool CheckSpaceAbove()
+    {
+        var info = Physics.OverlapSphere(_ceilingCheck.position, Data.GroundCheckRadius, Data.WhatIsCeiling);
+
+        return info.Length > 0;
+    }
+
+    #endregion
 }

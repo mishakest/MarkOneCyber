@@ -6,12 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class Ground : MonoBehaviour
 {
-    private const int lanesAmount = 3;
+    private const int _lanesAmount = 3;
 
     [SerializeField] private BoxCollider _collider;
 
     public float GetLaneOffset()
     {
-        return (_collider.size.x / lanesAmount) / 2;
+        return (_collider.size.x / _lanesAmount) / 2;
     }
 }

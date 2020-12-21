@@ -2,11 +2,14 @@
 
 public class JumpState : MoveState
 {
+    public JumpState(Actor actor, ActorData data, StateMachine stateMachine, string animationName) : base(actor, data, stateMachine, animationName)
+    {
+    }
+
     public override void Enter()
     {
         base.Enter();
 
-        Debug.Log("Enter Jump State");
         actor.InputHandler.UseJumpInput();
         Jump();
     }
@@ -19,7 +22,7 @@ public class JumpState : MoveState
         {
             stateMachine.ChangeState(actor.RunState);
         }
-        else if (actor.InputHandler.SlideInput)
+        else if (slideInput)
         {
             stateMachine.ChangeState(actor.SlideState);
         }
@@ -27,6 +30,6 @@ public class JumpState : MoveState
 
     private void Jump()
     {
-        actor.Collider.Rigidbody.AddForce(Vector3.up * data.JumpForce, ForceMode.Impulse);
+        actor.Collider.AddForce(Vector3.up * data.JumpForce, ForceMode.Impulse);
     }
 }
