@@ -31,7 +31,7 @@ public class Actor : MonoBehaviour
     #endregion
     #region [CHARACTERSETUP]
 
-    public Character Character;
+    public Character Character { get; private set; }
     public CharacterCollider Collider;
 
     #endregion
