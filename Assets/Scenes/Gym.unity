@@ -239,8 +239,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.36881068
-  m_Height: 1.932611
+  m_Radius: 0.36
+  m_Height: 1.9
   m_Direction: 1
   m_Center: {x: -0.01, y: 0.9555743, z: 0}
 --- !u!114 &678259685
@@ -453,7 +453,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trackProcessor: {fileID: 1413289502}
   _chunkPool: {fileID: 1250565710}
-  spawn: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +714,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundCheck: {fileID: 1383456596}
   Data: {fileID: 11400000, guid: 9d442749448873343bd95a69d9ba4bac, type: 2}
-  Character: {fileID: 433856409}
   Collider: {fileID: 678259685}
 --- !u!114 &1291584703
 MonoBehaviour:
