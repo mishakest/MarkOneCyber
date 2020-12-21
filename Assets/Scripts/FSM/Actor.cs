@@ -25,7 +25,6 @@ public class Actor : MonoBehaviour
 
     public RunState RunState { get; private set; }
     public JumpState JumpState { get; private set; }
-
     public SlideState SlideState { get; private set; }
     public DeathState DeathState { get; private set; }
 
@@ -58,6 +57,7 @@ public class Actor : MonoBehaviour
         IsAlive = true;
 
         InputHandler = GetComponent<InputHandler>();
+        Character = Collider.GetComponentInChildren<Character>();
         StateMachine.Init(RunState);
     }
 
@@ -72,7 +72,6 @@ public class Actor : MonoBehaviour
     }
 
     #endregion
-
     #region [METHODS]
 
     public void ApplyWaringDamage()

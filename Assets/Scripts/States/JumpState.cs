@@ -10,7 +10,6 @@ public class JumpState : MoveState
     {
         base.Enter();
 
-        Debug.Log("Enter Jump State");
         actor.InputHandler.UseJumpInput();
         Jump();
     }
