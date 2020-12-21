@@ -42,6 +42,8 @@ public class Actor : MonoBehaviour
 
     #endregion
 
+    public float LaneOffset { get; set; }
+    public Vector3 TargetPosition { get; set; }
     public Lane CurrentLane { get; set; }
     public bool IsAlive { get; private set; }
 
@@ -70,6 +72,8 @@ public class Actor : MonoBehaviour
     private void Update()
     {
         StateMachine.CurrentState.Tick();
+
+        Debug.Log(CurrentLane.ToString());
     }
 
     private void FixedUpdate()

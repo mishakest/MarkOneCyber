@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-public class SlideState : MoveState
+public class SlideState :MoveState
 {
+
     public SlideState(Actor actor, ActorData data, StateMachine stateMachine, string animationName) : base(actor, data, stateMachine, animationName)
     {
     }

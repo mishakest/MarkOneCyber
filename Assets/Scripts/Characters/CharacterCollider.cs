@@ -25,4 +25,7 @@ public class CharacterCollider : MonoBehaviour
         _collider.center = center;
         _collider.height = height;
     }
+
+    public Vector3 GetVelocity() => _rigidbody.velocity;
+    public void SetVelocity(Vector3 velocity) => _rigidbody.velocity = velocity;
 }

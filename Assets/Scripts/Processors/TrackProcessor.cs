@@ -7,7 +7,6 @@ using System.Linq;
 public class TrackProcessor : MonoSingletone<TrackProcessor>
 {
     public float Speed { get; private set; }
-    public float LaneOffset { get; set; }
     public Chunk CurrentChunk => AvailableChunks.Last();
     public List<Chunk> AvailableChunks { get; private set; }
 
@@ -23,10 +22,10 @@ public class TrackProcessor : MonoSingletone<TrackProcessor>
         Speed = _startingSpeed;
 
         var chunk = _startingChunkGO.GetComponent<Chunk>();
-        LaneOffset = chunk.Ground.GetLaneOffset();
+        _player.LaneOffset = chunk.Ground.GetLaneOffset();
         AvailableChunks.Add(chunk);
 
-        Debug.Log(LaneOffset);
+        Debug.Log(_player.LaneOffset);
     }
 
     private void Update()

@@ -9,7 +9,7 @@ public class MoveState : State
     protected bool jumpInput;
     protected bool slideInput;
 
-    private Vector3 _targetPosition;
+    protected Vector3 velocity;
 
     public MoveState(Actor actor, ActorData data, StateMachine stateMachine, string animationName) : base(actor, data, stateMachine, animationName)
     {
@@ -23,7 +23,9 @@ public class MoveState : State
         jumpInput = actor.InputHandler.JumpInput;
         slideInput = actor.InputHandler.SlideInput;
 
-        PeformMovment();
+        PerformMoving();
+
+        Debug.Log(actor.TargetPosition);
 
         if (movementInput != 0.0f)
         {
@@ -38,9 +40,10 @@ public class MoveState : State
 
         isTouchingGround = actor.CheckIfTouchingGround();
         isTouchingCeiling = actor.CheckSpaceAbove();
+        velocity = actor.Collider.GetVelocity();
     }
 
-    private void ChangeLane(int direction)
+    protected void ChangeLane(int direction)
     {
         var targetLane = actor.CurrentLane + direction;
 
@@ -51,19 +54,19 @@ public class MoveState : State
         }
 
         actor.CurrentLane = targetLane;
-        _targetPosition = Vector3.right * ((int)actor.CurrentLane - 1) * TrackProcessor.Instance.LaneOffset;
+        actor.TargetPosition = Vector3.right * (int)actor.CurrentLane * actor.LaneOffset;
     }
 
-    private void PeformMovment()
+    private void PerformMoving()
     {
-        actor.transform.localPosition = Vector3.MoveTowards(actor.transform.localPosition, _targetPosition, actor.Data.LaneChangeSpeed * Time.deltaTime);
+        actor.transform.localPosition = Vector3.MoveTowards(actor.transform.localPosition, actor.TargetPosition, data.LaneChangeSpeed * Time.deltaTime);
     }
 }
 
 public enum Lane
 {
-    Left,
-    Middle,
-    Right
+    Left = -1,
+    Middle = 0,
+    Right = 1
 }
 
