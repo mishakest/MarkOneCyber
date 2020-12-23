@@ -3,19 +3,31 @@
 public class MoveState : State
 {
     protected bool isTouchingGround;
+    protected bool isTouchingCeiling;
+
+    protected int movementInput;
+    protected bool jumpInput;
+    protected bool slideInput;
+
+    protected Vector3 velocity;
+
+    public MoveState(Actor actor, ActorData data, StateMachine stateMachine, string animationName) : base(actor, data, stateMachine, animationName)
+    {
+    }
 
     public override void Tick()
     {
         base.Tick();
 
+        movementInput = actor.InputHandler.MovementInput;
+        jumpInput = actor.InputHandler.JumpInput;
+        slideInput = actor.InputHandler.SlideInput;
 
-        PeformMovment();
+        PerformMoving();
 
-        var input = actor.InputHandler.MovementInput;
-
-        if (input != 0.0f)
+        if (movementInput != 0.0f)
         {
-            ChangeLane((int)input);
+            ChangeLane(movementInput);
             actor.InputHandler.UseMovementInput();
         }
     }
@@ -25,9 +37,11 @@ public class MoveState : State
         base.DoChecks();
 
         isTouchingGround = actor.CheckIfTouchingGround();
+        isTouchingCeiling = actor.CheckSpaceAbove();
+        velocity = actor.Collider.GetVelocity();
     }
 
-    private void ChangeLane(int direction)
+    protected void ChangeLane(int direction)
     {
         var targetLane = actor.CurrentLane + direction;
 
@@ -38,19 +52,19 @@ public class MoveState : State
         }
 
         actor.CurrentLane = targetLane;
-        actor.TargetPosition = Vector3.right * ((int)actor.CurrentLane - 1) * TrackProcessor.Instance.LaneOffset;
+        actor.TargetPosition = Vector3.right * (int)actor.CurrentLane * actor.LaneOffset;
     }
 
-    private void PeformMovment()
+    private void PerformMoving()
     {
-        actor.transform.localPosition = Vector3.MoveTowards(actor.transform.localPosition, actor.TargetPosition, actor.Data.LaneChangeSpeed * Time.deltaTime);
+        actor.transform.localPosition = Vector3.MoveTowards(actor.transform.localPosition, actor.TargetPosition, data.LaneChangeSpeed * Time.deltaTime);
     }
 }
 
 public enum Lane
 {
-    Left,
-    Middle,
-    Right
+    Left = -1,
+    Middle = 0,
+    Right = 1
 }
 

@@ -11,7 +11,7 @@ public abstract class State
 
     private string animationName;
 
-    public void Init(Actor actor, ActorData data, StateMachine stateMachine, string animationName)
+    public State(Actor actor, ActorData data, StateMachine stateMachine, string animationName)
     {
         this.actor = actor;
         this.data = data;

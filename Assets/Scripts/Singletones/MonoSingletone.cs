@@ -8,7 +8,7 @@ public abstract class MonoSingletone<T> : MonoBehaviour where T : MonoSingletone
         get
         {
             if (_instance == null)
-                Debug.Log("Some of your Mono Singletones is null.");
+                Debug.LogError("Some of your Mono Singletones is null.");
 
             return _instance;
         }

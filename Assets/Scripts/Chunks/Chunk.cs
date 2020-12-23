@@ -15,4 +15,6 @@ public class Chunk : MonoBehaviour
     {
         transform.position += direction * speed * Time.deltaTime;
     }
+
+    public void SetSpawnPosition(Vector3 previuosChunkEndPosition) => transform.position = previuosChunkEndPosition - StartPoint.localPosition;
 }
