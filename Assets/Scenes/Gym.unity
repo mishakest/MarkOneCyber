@@ -179,8 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e10ce31d8e5b74698d79284829cef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectSwipeOnlyAfterRelease: 1
-  minDistanceForSwipe: 20
+  _detectSwipeOnlyAfterRelease: 1
+  _minDistanceForSwipe: 20
+  _screenResolutionRatio: 0.5625
+  _touchDistanceTreshold: 0.1
 --- !u!1 &201307352
 GameObject:
   m_ObjectHideFlags: 0
