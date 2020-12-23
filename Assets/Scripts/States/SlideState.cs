@@ -11,8 +11,6 @@ public class SlideState :MoveState
     {
         base.Enter();
 
-        Debug.Log("Enter Slide State");
-
         actor.InputHandler.UseSlideInput();
         actor.Collider.SetColliderHeight(data.SlideColliderHeight);
 
@@ -42,8 +40,6 @@ public class SlideState :MoveState
     public override void Exit()
     {
         base.Exit();
-
-        Debug.Log("Exit Slide State");
 
         actor.Collider.SetColliderHeight(data.StandColliderHeight);
     }

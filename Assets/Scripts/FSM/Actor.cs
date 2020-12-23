@@ -72,8 +72,6 @@ public class Actor : MonoBehaviour
     private void Update()
     {
         StateMachine.CurrentState.Tick();
-
-        Debug.Log(CurrentLane.ToString());
     }
 
     private void FixedUpdate()

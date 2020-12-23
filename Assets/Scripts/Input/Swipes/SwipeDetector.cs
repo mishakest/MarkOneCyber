@@ -7,31 +7,32 @@ public class SwipeDetector : MonoBehaviour
 {
     public static event Action<SwipeData> OnSwipe;
 
-    private Vector2 fingerDownPosition;
-    private Vector2 fingerUpPosition;
+    [SerializeField] private bool _detectSwipeOnlyAfterRelease = false;
+    [SerializeField] private float _minDistanceForSwipe = 20.0f;
+    [SerializeField] private float _screenResolutionRatio = 0.5625f;
+    [SerializeField] private float _touchDistanceTreshold = 0.1f;
 
-    [SerializeField] private bool detectSwipeOnlyAfterRelease = false;
-    [SerializeField] private float minDistanceForSwipe = 20.0f;
+    private Vector2 _fingerDownPosition;
+    private Vector2 _fingerUpPosition;
 
     private void Update()
-    {
+    {        
         foreach (Touch touch in Input.touches)
         {
             if (touch.phase == TouchPhase.Began)
             {
-                fingerUpPosition = touch.position;
-                fingerDownPosition = touch.position;
+                _fingerUpPosition = touch.position;
+                _fingerDownPosition = touch.position;
             }
 
-            if (!detectSwipeOnlyAfterRelease && touch.phase == TouchPhase.Moved)
+            if (!_detectSwipeOnlyAfterRelease && touch.phase == TouchPhase.Moved)
             {
-                fingerDownPosition = touch.position;
+                _fingerDownPosition = touch.position;
                 DetectSwipe();
             }
-
-            if (touch.phase == TouchPhase.Ended)
+            else if (touch.phase == TouchPhase.Ended)
             {
-                fingerDownPosition = touch.position;
+                _fingerDownPosition = touch.position;
                 DetectSwipe();
             }
         }
@@ -41,33 +42,38 @@ public class SwipeDetector : MonoBehaviour
     {
         if (IsSwipeDistanceCheckMet())
         {
+            var deltaPosition = _fingerDownPosition.y - _fingerUpPosition.y;
+
+            if (Mathf.Abs(deltaPosition) < _touchDistanceTreshold)
+                return;
+
             if (IsVerticalSwipe())
             {
-                var direction = fingerDownPosition.y - fingerUpPosition.y > 0 ? SwipeDirection.Up : SwipeDirection.Down;
+                var direction = deltaPosition > 0 ? SwipeDirection.Up : SwipeDirection.Down;
                 SendSwipe(direction);
             }
             else
             {
-                var direction = fingerDownPosition.y - fingerUpPosition.y > 0 ? SwipeDirection.Right : SwipeDirection.Left;
+                var direction = deltaPosition > 0 ? SwipeDirection.Right : SwipeDirection.Left;
                 SendSwipe(direction);
             }
 
-            fingerUpPosition = fingerDownPosition;
+            _fingerUpPosition = _fingerDownPosition;
         }
     }
 
-    private bool IsSwipeDistanceCheckMet() => GetVerticalMovementDistance() > minDistanceForSwipe || GetHorizontalMovementDistance() > minDistanceForSwipe;
-    private bool IsVerticalSwipe() => GetVerticalMovementDistance() > GetHorizontalMovementDistance();
-    private float GetVerticalMovementDistance() => Mathf.Abs(fingerDownPosition.y - fingerUpPosition.y);
-    private float GetHorizontalMovementDistance() => Mathf.Abs(fingerDownPosition.x = fingerUpPosition.x);
+    private bool IsSwipeDistanceCheckMet() => GetVerticalMovementDistance() > _minDistanceForSwipe * _screenResolutionRatio || GetHorizontalMovementDistance() > _minDistanceForSwipe;
+    private bool IsVerticalSwipe() => GetVerticalMovementDistance() > GetHorizontalMovementDistance() * _screenResolutionRatio;
+    private float GetVerticalMovementDistance() => Mathf.Abs(_fingerDownPosition.y - _fingerUpPosition.y);
+    private float GetHorizontalMovementDistance() => Mathf.Abs(_fingerDownPosition.x = _fingerUpPosition.x);
 
     private void SendSwipe(SwipeDirection direction)
     {
         SwipeData swipeData = new SwipeData()
         {
             Direction = direction,
-            StartPosition = fingerDownPosition,
-            EndPosition = fingerUpPosition
+            StartPosition = _fingerDownPosition,
+            EndPosition = _fingerUpPosition
         };
         OnSwipe(swipeData);
     }

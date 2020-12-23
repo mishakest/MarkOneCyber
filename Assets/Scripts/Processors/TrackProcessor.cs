@@ -24,8 +24,6 @@ public class TrackProcessor : MonoSingletone<TrackProcessor>
         var chunk = _startingChunkGO.GetComponent<Chunk>();
         _player.LaneOffset = chunk.Ground.GetLaneOffset();
         AvailableChunks.Add(chunk);
-
-        Debug.Log(_player.LaneOffset);
     }
 
     private void Update()
