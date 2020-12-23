@@ -5,7 +5,7 @@ public class MoveState : State
     protected bool isTouchingGround;
     protected bool isTouchingCeiling;
 
-    protected float movementInput;
+    protected int movementInput;
     protected bool jumpInput;
     protected bool slideInput;
 
@@ -25,11 +25,9 @@ public class MoveState : State
 
         PerformMoving();
 
-        Debug.Log(actor.TargetPosition);
-
         if (movementInput != 0.0f)
         {
-            ChangeLane((int)movementInput);
+            ChangeLane(movementInput);
             actor.InputHandler.UseMovementInput();
         }
     }
