@@ -14,7 +14,7 @@ public class ChunkSpawnerTools : Editor
 
         if (GUILayout.Button("Spawn Chunk"))
         {
-            spawner.Spawn();
+            spawner.Spawn(Vector3.one * 100.0f);
         }
     }
 }
