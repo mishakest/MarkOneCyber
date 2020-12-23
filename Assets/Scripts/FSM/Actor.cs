@@ -48,6 +48,7 @@ public class Actor : MonoBehaviour
     public bool IsAlive { get; private set; }
 
     #region [UNITY CALLBACK]
+
     private void Awake()
     {
         StateMachine = new StateMachine();
@@ -100,6 +101,8 @@ public class Actor : MonoBehaviour
 
         return info.Length > 0;
     }
+
+    private void SetLaneOffset(float offset) => LaneOffset = offset;
 
     #endregion
 }

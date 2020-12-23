@@ -1,37 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 #pragma warning disable 0649
-public class TrackProcessor : MonoSingletone<TrackProcessor>
-{
+public class TrackProcessor : MonoBehaviour
+{ 
     public float Speed { get; private set; }
-    public Chunk CurrentChunk => AvailableChunks.Last();
-    public List<Chunk> AvailableChunks { get; private set; }
 
     [SerializeField] private float _startingSpeed;
-    [SerializeField] private GameObject _startingChunkGO;
 
-    private Actor _player;
+    [SerializeField] private ChunkPlacer _chunkPlacer;
+    [SerializeField] private Actor _player;
 
     private void Start()
     {
-        AvailableChunks = new List<Chunk>();
-        _player = FindObjectOfType<Actor>();
         Speed = _startingSpeed;
+        _chunkPlacer.Player = _player.transform;
 
-        var chunk = _startingChunkGO.GetComponent<Chunk>();
+        var chunk = _chunkPlacer.StartingChunk;
         _player.LaneOffset = chunk.Ground.GetLaneOffset();
-        AvailableChunks.Add(chunk);
     }
 
     private void Update()
     {
-        foreach (var chunk in AvailableChunks)
+        MoveChunks();
+    }
+
+    private void MoveChunks()
+    {
+        foreach (var chunk in _chunkPlacer.SpawnedChunks)
         {
-            var direction = _player.transform.forward.z * Vector3.back;
-            chunk.Move(direction, Speed);
+            chunk.Move(Vector3.back, Speed);
         }
     }
+
+
 }
