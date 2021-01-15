@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chunk : MonoBehaviour
+public class Chunkold : MonoBehaviour
 {
     [Header("Bounds")]
     public Transform StartPoint;
@@ -18,3 +19,5 @@ public class Chunk : MonoBehaviour
 
     public void SetSpawnPosition(Vector3 previuosChunkEndPosition) => transform.position = previuosChunkEndPosition - StartPoint.localPosition;
 }
+
+

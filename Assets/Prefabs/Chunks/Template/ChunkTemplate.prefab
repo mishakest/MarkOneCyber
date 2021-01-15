@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4207429012595328719}
-  - component: {fileID: 255554672237088030}
+  - component: {fileID: 3931220162588076910}
   m_Layer: 0
   m_Name: ChunkTemplate
   m_TagString: Untagged
@@ -63,7 +63,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &255554672237088030
+--- !u!114 &3931220162588076910
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,12 +72,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4207429012595328716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01e741623d34f70498ee9ed6a89c90f7, type: 3}
+  m_Script: {fileID: 11500000, guid: f433516abfa4ebf4f956b3f385cd50e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StartPoint: {fileID: 4207429013986201576}
   EndPoint: {fileID: 4207429012245491901}
-  Ground: {fileID: 2150675059334714588}
 --- !u!1 &4207429013648022140
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +89,6 @@ GameObject:
   - component: {fileID: 4207429013648022113}
   - component: {fileID: 4207429013648022142}
   - component: {fileID: 1665751170120461092}
-  - component: {fileID: 2150675059334714588}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -174,19 +172,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2150675059334714588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4207429013648022140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ece7f34dc4918a459929a9719562f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _collider: {fileID: 1665751170120461092}
 --- !u!1 &4207429013859869790
 GameObject:
   m_ObjectHideFlags: 0

@@ -2386,7 +2386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 846010683612033064}
-  - component: {fileID: 3626947770690681849}
+  - component: {fileID: 486815192639885233}
   m_Layer: 0
   m_Name: phuljkeeeChunk
   m_TagString: Untagged
@@ -2435,7 +2435,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3626947770690681849
+--- !u!114 &486815192639885233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2444,12 +2444,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 846010683612033067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01e741623d34f70498ee9ed6a89c90f7, type: 3}
+  m_Script: {fileID: 11500000, guid: f433516abfa4ebf4f956b3f385cd50e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StartPoint: {fileID: 846010685037639951}
   EndPoint: {fileID: 846010684354004570}
-  Ground: {fileID: 3172455858432614971}
 --- !u!1 &846010684354004573
 GameObject:
   m_ObjectHideFlags: 0

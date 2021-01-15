@@ -8,17 +8,13 @@ public class TrackProcessor : MonoBehaviour
     public float Speed { get; private set; }
 
     [SerializeField] private float _startingSpeed;
-
-    [SerializeField] private ChunkPlacer _chunkPlacer;
     [SerializeField] private Actor _player;
+    [SerializeField] private ChunksPlacer _chunksPlacer;
 
     private void Start()
     {
+        _player.LaneOffset = 1.66666f;
         Speed = _startingSpeed;
-        _chunkPlacer.Player = _player.transform;
-
-        var chunk = _chunkPlacer.StartingChunk;
-        _player.LaneOffset = chunk.Ground.GetLaneOffset();
     }
 
     private void Update()
@@ -28,9 +24,9 @@ public class TrackProcessor : MonoBehaviour
 
     private void MoveChunks()
     {
-        foreach (var chunk in _chunkPlacer.SpawnedChunks)
+        foreach (var chunk in _chunksPlacer.SpawnedChunks)
         {
-            chunk.Move(Vector3.back, Speed);
+            chunk.Move(Vector3.back * Speed);
         }
     }
 

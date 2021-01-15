@@ -5,18 +5,18 @@ using System.Collections.Generic;
 public class ChunkPlacer : MonoBehaviour
 {
     public Transform Player { get; set; }
-    public Chunk StartingChunk => _startingChunk.GetComponent<Chunk>();
+    public Chunkold StartingChunk => _startingChunk.GetComponent<Chunkold>();
 
     [SerializeField] private float _prespawnDistance;
     [SerializeField] private int _maxChunksOnScene = 3;
     [SerializeField] private GameObject _startingChunk;
     [SerializeField] private ChunkPool _pool;
 
-    public List<Chunk> SpawnedChunks { get; private set; }
+    public List<Chunkold> SpawnedChunks { get; private set; }
 
     private void Awake()
     {
-        SpawnedChunks = new List<Chunk>();
+        SpawnedChunks = new List<Chunkold>();
         SpawnedChunks.Add(StartingChunk);
     }
 
@@ -34,7 +34,7 @@ public class ChunkPlacer : MonoBehaviour
 
     }
 
-    private Chunk Spawn(Vector3 previuosChunkEndPosition)
+    private Chunkold Spawn(Vector3 previuosChunkEndPosition)
     {
         var chunk = _pool.GetChunk();
         chunk.SetSpawnPosition(previuosChunkEndPosition);

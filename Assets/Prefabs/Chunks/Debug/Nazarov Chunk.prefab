@@ -26274,7 +26274,6 @@ GameObject:
   - component: {fileID: 7564672433038207532}
   - component: {fileID: 7564672433038207539}
   - component: {fileID: 5009472591736314729}
-  - component: {fileID: 5710683661690938513}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -26358,19 +26357,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5710683661690938513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7564672433038207537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ece7f34dc4918a459929a9719562f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _collider: {fileID: 5009472591736314729}
 --- !u!1 &7564672434090931841
 GameObject:
   m_ObjectHideFlags: 0
@@ -26380,7 +26366,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7564672434090931842}
-  - component: {fileID: 5842081879060462931}
+  - component: {fileID: 2121957275515572646}
   m_Layer: 0
   m_Name: Nazarov Chunk
   m_TagString: Untagged
@@ -26410,7 +26396,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5842081879060462931
+--- !u!114 &2121957275515572646
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -26419,12 +26405,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7564672434090931841}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01e741623d34f70498ee9ed6a89c90f7, type: 3}
+  m_Script: {fileID: 11500000, guid: f433516abfa4ebf4f956b3f385cd50e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StartPoint: {fileID: 7564672432696917925}
   EndPoint: {fileID: 7564672434454364400}
-  Ground: {fileID: 5710683661690938513}
 --- !u!1 &7564672434454364407
 GameObject:
   m_ObjectHideFlags: 0
