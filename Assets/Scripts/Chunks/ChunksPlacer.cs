@@ -6,9 +6,11 @@ public class ChunksPlacer : MonoBehaviour
 {
     [SerializeField] private Transform _player;
 
+    [Header("Chunks")]
     [SerializeField] private ChunksPool _chunksPool;
     [SerializeField] private Chunk _startingChunk;
 
+    [Header("Preferences")]
     [SerializeField] private float _prespawnDistance = 150.0f;
     [SerializeField] private int _maxChunksOnScene = 3;
 

@@ -4,17 +4,16 @@ using UnityEngine;
 
 #pragma warning disable 0649
 public class TrackProcessor : MonoBehaviour
-{ 
-    public float Speed { get; private set; }
+{
+    [SerializeField] private TrackProcessorChannelSO _trackProcessorChannel;
 
-    [SerializeField] private float _startingSpeed;
+    [Header("Scene Objects")]
     [SerializeField] private Actor _player;
     [SerializeField] private ChunksPlacer _chunksPlacer;
 
     private void Start()
     {
-        _player.LaneOffset = 1.66666f;
-        Speed = _startingSpeed;
+        _player.LaneOffset = _trackProcessorChannel.LaneOffset;
     }
 
     private void Update()
@@ -26,9 +25,7 @@ public class TrackProcessor : MonoBehaviour
     {
         foreach (var chunk in _chunksPlacer.SpawnedChunks)
         {
-            chunk.Move(Vector3.back * Speed);
+            chunk.Move(Vector3.back * _trackProcessorChannel.CurrentSpeed);
         }
     }
-
-
 }
