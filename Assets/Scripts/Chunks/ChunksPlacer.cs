@@ -5,7 +5,8 @@ using UnityEngine;
 public class ChunksPlacer : MonoBehaviour
 {
     [SerializeField] private Transform _player;
-    [SerializeField] private Chunk[] _chunkPrefabs;
+
+    [SerializeField] private ChunksPool _chunksPool;
     [SerializeField] private Chunk _startingChunk;
 
     [SerializeField] private float _prespawnDistance = 150.0f;
@@ -21,7 +22,7 @@ public class ChunksPlacer : MonoBehaviour
 
     private void Update()
     {
-        if (_player.position.z > SpawnedChunks[SpawnedChunks.Count - 1].EndPoint.position.z - _prespawnDistance)
+        if (_player.position.z > GetLastChunk().EndPoint.position.z - _prespawnDistance)
         {
             SpawnChunk();
         }
@@ -32,16 +33,29 @@ public class ChunksPlacer : MonoBehaviour
 
     private void SpawnChunk()
     {
-        var index = Random.Range(0, _chunkPrefabs.Length);
-
-        var chunk = Instantiate(_chunkPrefabs[index]);
-        chunk.transform.position = SpawnedChunks[SpawnedChunks.Count - 1].EndPoint.position - chunk.StartPoint.localPosition;
+        var chunk = _chunksPool.GetChunk();
+        chunk.gameObject.SetActive(true);
+        chunk.transform.position = GetLastChunk().EndPoint.position - chunk.StartPoint.localPosition;
         SpawnedChunks.Add(chunk);
     }
 
     private void DistinctChunk()
     {
-        Destroy(SpawnedChunks[0].gameObject);
+        var chunk = SpawnedChunks[0];
+        chunk.gameObject.SetActive(false);
+
+        foreach (var onRunChunk in _chunksPool.CreatedOnRunChunks)
+        {
+            if (chunk.gameObject == onRunChunk.gameObject)
+            {
+                SpawnedChunks.RemoveAt(0);
+                _chunksPool.DestroyCreatedChunk(chunk);
+                return;
+            }
+        }
+
         SpawnedChunks.RemoveAt(0);
     }
+
+    private Chunk GetLastChunk() => SpawnedChunks[SpawnedChunks.Count - 1];
 }
