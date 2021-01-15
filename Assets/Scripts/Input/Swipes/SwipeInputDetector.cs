@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SwipeDetector : MonoBehaviour
+public class SwipeInputDetector : MonoBehaviour
 {
     public static event Action<SwipeData> OnSwipe;
 
     [SerializeField] private bool _detectSwipeOnlyAfterRelease = false;
     [SerializeField] private float _minDistanceForSwipe = 20.0f;
-    [SerializeField] private float _screenResolutionRatio = 0.5625f;
-    [SerializeField] private float _touchDistanceTreshold = 0.1f;
 
     private Vector2 _fingerDownPosition;
     private Vector2 _fingerUpPosition;
@@ -44,9 +42,6 @@ public class SwipeDetector : MonoBehaviour
         {
             var deltaPosition = _fingerDownPosition.y - _fingerUpPosition.y;
 
-            if (Mathf.Abs(deltaPosition) < _touchDistanceTreshold)
-                return;
-
             if (IsVerticalSwipe())
             {
                 var direction = deltaPosition > 0 ? SwipeDirection.Up : SwipeDirection.Down;
@@ -62,10 +57,10 @@ public class SwipeDetector : MonoBehaviour
         }
     }
 
-    private bool IsSwipeDistanceCheckMet() => GetVerticalMovementDistance() > _minDistanceForSwipe * _screenResolutionRatio || GetHorizontalMovementDistance() > _minDistanceForSwipe;
-    private bool IsVerticalSwipe() => GetVerticalMovementDistance() > GetHorizontalMovementDistance() * _screenResolutionRatio;
+    private bool IsSwipeDistanceCheckMet() => GetVerticalMovementDistance() > _minDistanceForSwipe || GetHorizontalMovementDistance() > _minDistanceForSwipe;
+    private bool IsVerticalSwipe() => GetVerticalMovementDistance() > GetHorizontalMovementDistance();
     private float GetVerticalMovementDistance() => Mathf.Abs(_fingerDownPosition.y - _fingerUpPosition.y);
-    private float GetHorizontalMovementDistance() => Mathf.Abs(_fingerDownPosition.x = _fingerUpPosition.x);
+    private float GetHorizontalMovementDistance() => Mathf.Abs(_fingerDownPosition.x - _fingerUpPosition.x);
 
     private void SendSwipe(SwipeDirection direction)
     {

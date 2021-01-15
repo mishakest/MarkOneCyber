@@ -181,8 +181,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _detectSwipeOnlyAfterRelease: 1
   _minDistanceForSwipe: 20
-  _screenResolutionRatio: 0.5625
-  _touchDistanceTreshold: 0.1
 --- !u!1 &201307352
 GameObject:
   m_ObjectHideFlags: 0
