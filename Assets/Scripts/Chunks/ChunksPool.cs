@@ -16,7 +16,6 @@ public class ChunksPool : MonoBehaviour
         CreatedOnRunChunks = new List<Chunk>();
     }
 
-
     private void Generate()
     {
         for (int i = 0; i < _intances; i++)
@@ -24,8 +23,7 @@ public class ChunksPool : MonoBehaviour
             foreach (var chunk in _chunkPrefabs)
             {
                 var createdChunk = Instantiate(chunk);
-                createdChunk.SetActive(false);
-                createdChunk.transform.parent = transform;
+                ApplyChunkPreferences(createdChunk);
 
                 CreatedChunks.Add(createdChunk.GetComponent<Chunk>());
             }
@@ -60,23 +58,50 @@ public class ChunksPool : MonoBehaviour
         {
             return CreatedChunks[index];
         }
-        else
-        {
-            var createdChunk = Instantiate(CreatedChunks[index].gameObject);
-            createdChunk.SetActive(false);
-            createdChunk.transform.parent = transform;
 
-            var chunk = createdChunk.GetComponent<Chunk>();
+        var chunk = FindDisableDuplicate(index);
 
-            CreatedOnRunChunks.Add(chunk);
-
-            return chunk;
-        }
+        return chunk == null ? CreateChunkOnRun(index) : chunk;
     }
 
     public void DestroyCreatedChunk(Chunk chunk)
     {
         Destroy(chunk.gameObject);
         CreatedOnRunChunks.Remove(chunk);
+    }
+
+    private Chunk FindDisableDuplicate(int index)
+    {
+        var checkIndex = index;
+
+        for (int i = 0; i < _intances; i++)
+        {
+            int check = checkIndex > CreatedChunks.Count - 1 ? checkIndex - CreatedChunks.Count : checkIndex;
+            Debug.Log("check index = " + checkIndex + " check = " + check);
+
+            if (!CreatedChunks[check].gameObject.activeInHierarchy)
+                return CreatedChunks[check];
+
+            checkIndex += (_intances + 1);
+        }
+
+        return null;
+    }
+
+    private Chunk CreateChunkOnRun(int index)
+    {
+        var createdChunk = Instantiate(CreatedChunks[index].gameObject);
+        ApplyChunkPreferences(createdChunk);
+
+        var chunk = createdChunk.GetComponent<Chunk>();
+        CreatedOnRunChunks.Add(chunk);
+
+        return chunk;
+    }
+
+    private void ApplyChunkPreferences(GameObject chunk)
+    {
+        chunk.SetActive(false);
+        chunk.transform.parent = transform;
     }
 }
