@@ -76,11 +76,10 @@ public class ChunksPool : MonoBehaviour
 
         for (int i = 0; i < _intances; i++)
         {
-            int check = checkIndex > CreatedChunks.Count - 1 ? checkIndex - CreatedChunks.Count : checkIndex;
-            Debug.Log("check index = " + checkIndex + " check = " + check);
+            int loopedCheckIndex = checkIndex > CreatedChunks.Count - 1 ? checkIndex - CreatedChunks.Count : checkIndex;
 
-            if (!CreatedChunks[check].gameObject.activeInHierarchy)
-                return CreatedChunks[check];
+            if (!CreatedChunks[loopedCheckIndex].gameObject.activeInHierarchy)
+                return CreatedChunks[loopedCheckIndex];
 
             checkIndex += (_intances + 1);
         }
