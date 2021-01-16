@@ -32,4 +32,9 @@ public class JumpState : MoveState
     {
         actor.Collider.AddForce(Vector3.up * data.JumpForce, ForceMode.Impulse);
     }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
 }

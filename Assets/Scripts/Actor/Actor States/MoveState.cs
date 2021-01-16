@@ -30,6 +30,16 @@ public class MoveState : State
             ChangeLane(movementInput);
             actor.InputHandler.UseMovementInput();
         }
+
+        //todo: replace silly logic
+        if (isTouchingGround && !actor.BlobShadow.activeInHierarchy)
+        {
+            actor.EnableShadow();
+        }
+        else if (!isTouchingGround) 
+        {
+            actor.DisableShadow();
+        }
     }
 
     public override void DoChecks()

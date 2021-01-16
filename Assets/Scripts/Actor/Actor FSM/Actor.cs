@@ -37,7 +37,8 @@ public class Actor : MonoBehaviour
 
     public Character Character { get; private set; }
 
-    [Header("Collider")]
+    [Header("Attached Objects")]
+    public GameObject BlobShadow;
     public CharacterCollider Collider;
 
     #endregion
@@ -83,6 +84,9 @@ public class Actor : MonoBehaviour
     #endregion
     #region [OTHER METHODS]
 
+    public void EnableShadow() => BlobShadow.SetActive(true);
+    public void DisableShadow() => BlobShadow.SetActive(false);
+
     public void ApplyWaringDamage()
     {
         throw new NotImplementedException();
@@ -101,8 +105,6 @@ public class Actor : MonoBehaviour
 
         return info.Length > 0;
     }
-
-    private void SetLaneOffset(float offset) => LaneOffset = offset;
 
     #endregion
 }
