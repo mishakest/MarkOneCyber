@@ -13,7 +13,7 @@ public class TrackProcessor : MonoBehaviour
 
     private void Start()
     {
-        _player.LaneOffset = _trackProcessorChannel.LaneOffset;
+        _player.Data.LaneOffset = _trackProcessorChannel.LaneOffset;
     }
 
     private void Update()

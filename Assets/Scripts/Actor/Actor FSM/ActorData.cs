@@ -6,6 +6,7 @@ using UnityEngine;
 public class ActorData : ScriptableObject
 {
     [Header("Movement")]
+    public float LaneOffset;
     public float LaneChangeSpeed;
 
     [Header("Jump")]

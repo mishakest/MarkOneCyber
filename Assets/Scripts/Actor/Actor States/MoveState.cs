@@ -62,7 +62,7 @@ public class MoveState : State
         }
 
         actor.CurrentLane = targetLane;
-        actor.TargetPosition = Vector3.right * (int)actor.CurrentLane * actor.LaneOffset;
+        actor.TargetPosition = Vector3.right * (int)actor.CurrentLane * actor.Data.LaneOffset;
     }
 
     private void PerformMoving()
