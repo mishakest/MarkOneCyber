@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a5808fc489f784bbc68a0db73d5d1b, type: 3}
   m_Name: Actor Data
   m_EditorClassIdentifier: 
-  LaneChangeSpeed: 10
+  LaneChangeSpeed: 9
   JumpForce: 7
   MaxSlideTime: 1
   StandColliderHeight: 1.9
