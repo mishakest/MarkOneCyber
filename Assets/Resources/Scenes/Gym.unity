@@ -33820,7 +33820,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 250
-  field of view: 70
+  field of view: 75
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -45174,7 +45174,7 @@ MonoBehaviour:
   _groundCheck: {fileID: 1383456596}
   _ceilingCheck: {fileID: 820562263}
   Data: {fileID: 11400000, guid: 9d442749448873343bd95a69d9ba4bac, type: 2}
-  _blobShadow: {fileID: 1571016190}
+  BlobShadow: {fileID: 1571016190}
   Collider: {fileID: 678259685}
 --- !u!114 &1291584704
 MonoBehaviour:
@@ -56424,7 +56424,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571016190}
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 0.01, z: 0.09}
+  m_LocalPosition: {x: 0, y: 0.01, z: -0.2}
   m_LocalScale: {x: 0.6, y: 1.6, z: 1}
   m_Children: []
   m_Father: {fileID: 1291584705}
