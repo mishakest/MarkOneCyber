@@ -10,12 +10,12 @@ public class InputHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        SwipeDetector.OnSwipe += HandleMobileInput;
+        SwipeInputDetector.OnSwipe += HandleMobileInput;
     }
 
     private void OnDisable()
     {
-        SwipeDetector.OnSwipe -= HandleMobileInput;
+        SwipeInputDetector.OnSwipe -= HandleMobileInput;
     }
 
     private void Update()

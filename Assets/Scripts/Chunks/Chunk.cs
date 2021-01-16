@@ -8,13 +8,9 @@ public class Chunk : MonoBehaviour
     public Transform StartPoint;
     public Transform EndPoint;
 
-    [Header("Ground")]
-    public Ground Ground;
-
-    public void Move(Vector3 direction, float speed)
+    public void Move(Vector3 direction)
     {
-        transform.position += direction * speed * Time.deltaTime;
+        transform.position += direction * Time.deltaTime;
     }
-
-    public void SetSpawnPosition(Vector3 previuosChunkEndPosition) => transform.position = previuosChunkEndPosition - StartPoint.localPosition;
 }
+

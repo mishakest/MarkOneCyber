@@ -6,7 +6,7 @@ public class SwipeLogger : MonoBehaviour
 {
     private void OnEnable()
     {
-        SwipeDetector.OnSwipe += DebugSwipe;
+        SwipeInputDetector.OnSwipe += DebugSwipe;
     }
 
     private void DebugSwipe(SwipeData data)
