@@ -24,7 +24,7 @@ namespace MarkOne.Pool
         public void SetParent(Transform parent)
         {
             _parent = parent;
-            PoolRoot.SetParent(parent);
+            PoolRoot.SetParent(_parent);
         }
 
         public override T Request()

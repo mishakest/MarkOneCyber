@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
 
-
+#pragma warning disable 0649
 public class AudioProcessor : MonoBehaviour
 {
     [Header("SoundEmitters pool")]
@@ -43,9 +43,9 @@ public class AudioProcessor : MonoBehaviour
         }
     }
 
-    public void SetGroupVolume(string parametrName, float normalizedVolume)
+    public void SetGroupVolume(string parameterName, float normalizedVolume)
     {
-        bool volumeSet = _audioMixer.SetFloat(parametrName, NormalizedToMixerValue(normalizedVolume));
+        bool volumeSet = _audioMixer.SetFloat(parameterName, NormalizedToMixerValue(normalizedVolume));
 
         if (!volumeSet)
         {

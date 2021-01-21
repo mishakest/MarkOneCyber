@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+#pragma warning disable 0649
 [CreateAssetMenu(fileName = "newAudioCue", menuName = "Audio/Audio Cue")]
 public class AudioCueSO : ScriptableObject
 {

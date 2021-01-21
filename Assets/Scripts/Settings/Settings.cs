@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#pragma warning disable 0649
 public class Settings : MonoBehaviour
 {
     [SerializeField] private TrackProcessorChannelSO _trackProcessorChannel;

@@ -65,6 +65,7 @@ namespace MarkOne.Pool
         public virtual void OnDisable()
         {
             Available.Clear();
+            HasBeenPrewarmed = false;
         }
     }
 }
