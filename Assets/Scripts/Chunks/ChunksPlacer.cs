@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#pragma warning disable 0649
 public class ChunksPlacer : MonoBehaviour
 {
     [SerializeField] private Transform _player;
