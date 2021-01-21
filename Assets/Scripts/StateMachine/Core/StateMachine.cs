@@ -71,7 +71,7 @@ namespace MarkOne.StateMachine
             currentState.OnUpdate();
         }
 
-        private void Transition(StateAction transitionState)
+        private void Transition(State transitionState)
         {
             currentState.OnStateExit();
             currentState = transitionState;

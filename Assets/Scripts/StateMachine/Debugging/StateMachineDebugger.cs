@@ -84,7 +84,7 @@ namespace MarkOne.StateMachine.Debugging
             if (passed)
             {
                 LogActions(actions);
-                PrintDeebugLog();
+                PrintDebugLog();
             }
 
             _logBuilder.Clear();
