@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbd8e985de57c364abc7bb0aafd441d1, type: 3}
-  m_Name: SwipeInputTracker
+  m_Script: {fileID: 11500000, guid: 66037415339fe9a4dbaae6895a2b2551, type: 3}
+  m_Name: ChangeLaneAction
   m_EditorClassIdentifier: 
-  _detectSwipeOnlyAfterRelease: 1
-  _minDistanceForSwipe: 100
+  _laneChangeSpeed: 9

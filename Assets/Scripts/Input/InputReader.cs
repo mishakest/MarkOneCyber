@@ -15,6 +15,7 @@ public class InputReader : ScriptableObject
     public enum MoveDirection
     {
         Left = -1,
+        None = 0,
         Right = 1
     }
 }

@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbd8e985de57c364abc7bb0aafd441d1, type: 3}
-  m_Name: SwipeInputTracker
+  m_Script: {fileID: 11500000, guid: 3ca5d2ad810d22b499006a745fee64e1, type: 3}
+  m_Name: JumpState
   m_EditorClassIdentifier: 
-  _detectSwipeOnlyAfterRelease: 1
-  _minDistanceForSwipe: 100
+  _actions:
+  - {fileID: 11400000, guid: 0fd60b822f9dcfa4db55ac604521a47f, type: 2}
+  - {fileID: 11400000, guid: 627cb3fc815266f4f8fc93d517e00812, type: 2}
