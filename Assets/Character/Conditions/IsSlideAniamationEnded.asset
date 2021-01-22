@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbd8e985de57c364abc7bb0aafd441d1, type: 3}
-  m_Name: SwipeInputTracker
+  m_Script: {fileID: 11500000, guid: 58a5d9793f865b4428b37a32c8962785, type: 3}
+  m_Name: IsSlideAniamationEnded
   m_EditorClassIdentifier: 
-  _detectSwipeOnlyAfterRelease: 1
-  _minDistanceForSwipe: 20
+  cacheResult: 1
+  _animation: {fileID: -203655887218126122, guid: 0cc7a1ddd0899a549b09c3cfbee05815, type: 3}

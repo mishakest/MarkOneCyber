@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbd8e985de57c364abc7bb0aafd441d1, type: 3}
-  m_Name: SwipeInputTracker
+  m_Script: {fileID: 11500000, guid: 40f71841481639c46840d85f404ff1b1, type: 3}
+  m_Name: SlideAction
   m_EditorClassIdentifier: 
-  _detectSwipeOnlyAfterRelease: 1
-  _minDistanceForSwipe: 20
+  _colliderHeight: 0.95

@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbd8e985de57c364abc7bb0aafd441d1, type: 3}
-  m_Name: SwipeInputTracker
+  m_Script: {fileID: 11500000, guid: d17eab10e647e624c9eaaf299ee90a85, type: 3}
+  m_Name: SetJumpToSlideAnimationParameter
   m_EditorClassIdentifier: 
-  _detectSwipeOnlyAfterRelease: 1
-  _minDistanceForSwipe: 20
+  parameterType: 3
+  ParameterName: jumpToSlide
+  BoolValue: 0
+  IntValue: 0
+  FloatValue: 0
+  WhenToRun: 0

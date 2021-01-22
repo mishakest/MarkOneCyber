@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ca5d2ad810d22b499006a745fee64e1, type: 3}
-  m_Name: JumpState
+  m_Name: JumpToSlideState
   m_EditorClassIdentifier: 
   _actions:
-  - {fileID: 11400000, guid: f2b07c6f7334f5c4c9e041d86746afae, type: 2}
-  - {fileID: 11400000, guid: 0fd60b822f9dcfa4db55ac604521a47f, type: 2}
+  - {fileID: 11400000, guid: 24c05a204b63d524793ffa716924c85a, type: 2}
+  - {fileID: 11400000, guid: 4b5eee825686d3f4bb7282672481ca5b, type: 2}
+  - {fileID: 11400000, guid: 7e7ab7a9bab1ccc4abbb6ac63829b6ef, type: 2}
   - {fileID: 11400000, guid: 627cb3fc815266f4f8fc93d517e00812, type: 2}

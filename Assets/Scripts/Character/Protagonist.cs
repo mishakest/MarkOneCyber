@@ -14,7 +14,7 @@ public class Protagonist : MonoBehaviour
     public InputReader.MoveDirection MoveInput { get; private set; }
     public Lane CurrentLane { get; set; }
 
-    public CapsuleCollider Collider { get; private set; }
+    public CapsuleCollider Collider;
     public Rigidbody Rigidbody { get; private set; }
 
     public ActorData Data = default;
@@ -42,7 +42,6 @@ public class Protagonist : MonoBehaviour
 
     private void Start()
     {
-        Collider = GetComponent<CapsuleCollider>();
         Rigidbody = GetComponent<Rigidbody>();
         CurrentLane = Lane.Middle;
     }
@@ -61,4 +60,12 @@ public class Protagonist : MonoBehaviour
     public void UseSlideInput() => SlideInput = false;
     public void UseJumpInput() => JumpInput = false;
     public void UseMoveInput() => MoveInput = InputReader.MoveDirection.None;
+
+    public void SetColliderHeight(float height)
+    {
+        var center = Collider.center;
+        center.y += (height - Collider.height) / 2;
+        Collider.center = center;
+        Collider.height = height;
+    }
 }

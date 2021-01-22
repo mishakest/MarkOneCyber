@@ -60040,6 +60040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Character: {fileID: 1249684762}
+  Collider: {fileID: 1661522922}
   Data: {fileID: 11400000, guid: 9d442749448873343bd95a69d9ba4bac, type: 2}
   _inputReader: {fileID: 11400000, guid: 44ef24e90d8608240b007bd7c2e02524, type: 2}
   _blobShadow: {fileID: 850536825}
