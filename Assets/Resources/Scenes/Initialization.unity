@@ -279,7 +279,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1828284223}
-  - component: {fileID: 1828284222}
   - component: {fileID: 1828284221}
   m_Layer: 0
   m_Name: Input
@@ -297,23 +296,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1828284220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34e5fe36431eceb4db2ae8e3c063dbcf, type: 3}
+  m_Script: {fileID: 11500000, guid: fe6b145ebd32f3344862b1c3764d4acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1828284222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828284220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9e10ce31d8e5b74698d79284829cef9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _detectSwipeOnlyAfterRelease: 1
-  _minDistanceForSwipe: 20
+  _inputReader: {fileID: 11400000, guid: 44ef24e90d8608240b007bd7c2e02524, type: 2}
+  _inputTrackers:
+  - {fileID: 11400000, guid: a967f17124e9d944e96b52aaad410966, type: 2}
+  - {fileID: 11400000, guid: ef30bdc7bb65a284c8fd5fcb1282ce94, type: 2}
+  _logger: {fileID: 11400000, guid: c1742faefd954614ca17355b931fc52d, type: 2}
+  _enableLogging: 1
 --- !u!4 &1828284223
 Transform:
   m_ObjectHideFlags: 0

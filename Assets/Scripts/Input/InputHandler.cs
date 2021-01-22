@@ -8,15 +8,15 @@ public class InputHandler : MonoBehaviour
     public bool JumpInput { get; private set; }
     public bool SlideInput { get; private set; }
 
-    private void OnEnable()
-    {
-        SwipeInputDetector.OnSwipe += HandleMobileInput;
-    }
+    //private void OnEnable()
+    //{
+    //    SwipeInputDetector.OnSwipe += HandleMobileInput;
+    //}
 
-    private void OnDisable()
-    {
-        SwipeInputDetector.OnSwipe -= HandleMobileInput;
-    }
+    //private void OnDisable()
+    //{
+    //    SwipeInputDetector.OnSwipe -= HandleMobileInput;
+    //}
 
     private void Update()
     {
@@ -25,24 +25,24 @@ public class InputHandler : MonoBehaviour
 #endif
     }
 
-    private void HandleMobileInput(SwipeData data)
-    {
-        switch (data.Direction)
-        {
-            case SwipeDirection.Up:
-                JumpInput = true;
-                break;
-            case SwipeDirection.Down:
-                SlideInput = true;
-                break;
-            case SwipeDirection.Left:
-                MovementInput = -1;
-                break;
-            case SwipeDirection.Right:
-                MovementInput = 1;
-                break;
-        }
-    }
+    //private void HandleMobileInput(SwipeData data)
+    //{
+    //    switch (data.Direction)
+    //    {
+    //        case SwipeDirection.Up:
+    //            JumpInput = true;
+    //            break;
+    //        case SwipeDirection.Down:
+    //            SlideInput = true;
+    //            break;
+    //        case SwipeDirection.Left:
+    //            MovementInput = -1;
+    //            break;
+    //        case SwipeDirection.Right:
+    //            MovementInput = 1;
+    //            break;
+    //    }
+    //}
 
     private void HandleKeyboardInput()
     {

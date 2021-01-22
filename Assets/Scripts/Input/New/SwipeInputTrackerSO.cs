@@ -1,20 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
-public class SwipeInputDetector : MonoBehaviour
+[CreateAssetMenu(fileName = "SwipeInputTracker", menuName = "Input/Trackers/SwipeInputTracker")]
+public class SwipeInputTrackerSO : InputTracker
 {
-    public static event Action<SwipeData> OnSwipe;
-
     [SerializeField] private bool _detectSwipeOnlyAfterRelease = false;
     [SerializeField] private float _minDistanceForSwipe = 20.0f;
 
     private Vector2 _fingerDownPosition;
     private Vector2 _fingerUpPosition;
 
-    private void Update()
-    {        
+    public override void TrackInput()
+    {
         foreach (Touch touch in Input.touches)
         {
             if (touch.phase == TouchPhase.Began)
@@ -70,21 +67,6 @@ public class SwipeInputDetector : MonoBehaviour
             StartPosition = _fingerDownPosition,
             EndPosition = _fingerUpPosition
         };
-        OnSwipe(swipeData);
+        SendData(swipeData);
     }
-}
-
-public enum SwipeDirection
-{
-    Up,
-    Down,
-    Left,
-    Right
-}
-
-public struct SwipeData
-{
-    public Vector2 StartPosition;
-    public Vector2 EndPosition;
-    public SwipeDirection Direction;
 }
