@@ -16,7 +16,7 @@ namespace MarkOne.StateMachine
 
         public enum SpecificMoment
         {
-            OnStateEEnter,
+            OnStateEnter,
             OnStateExit,
             OnUpdate
         }

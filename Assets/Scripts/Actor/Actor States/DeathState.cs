@@ -2,7 +2,7 @@
 
 public class DeathState : State
 {
-    public DeathState(Actor actor, ActorData data, StateMachine stateMachine, string animationName) : base(actor, data, stateMachine, animationName)
+    public DeathState(Actor actor, ActorData data, StateMachineOld stateMachine, string animationName) : base(actor, data, stateMachine, animationName)
     {
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine
+public class StateMachineOld
 {
     public State CurrentState { get; private set; }
 

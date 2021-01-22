@@ -16,7 +16,7 @@ namespace MarkOne.StateMachine.Editor
 
 		private UnityEditor.Editor _transitionTableEditor;
 
-		[MenuItem("Transition Table Editor", menuItem = "ChopChop/Transition Table Editor")]
+		[MenuItem("Transition Table Editor", menuItem = "MarkOne/Transition Table Editor")]
 		internal static void Display()
 		{
 			if (_window == null)
