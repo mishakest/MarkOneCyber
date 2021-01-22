@@ -11,7 +11,6 @@ public class Protagonist : MonoBehaviour
 
     public InputReader.MoveDirection MoveInput { get; private set; }
     public Lane CurrentLane { get; set; }
-    public Vector3 TargetPosition { get; set; }
 
     public CapsuleCollider Collider { get; private set; }
     public Rigidbody Rigidbody { get; private set; }

@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66037415339fe9a4dbaae6895a2b2551, type: 3}
-  m_Name: ChangeLaneAction
+  m_Name: ApplyHorizontalMovementAction
   m_EditorClassIdentifier: 
   _laneChangeSpeed: 9

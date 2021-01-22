@@ -3,22 +3,23 @@ using MarkOne.StateMachine;
 using MarkOne.StateMachine.ScriptableObjects;
 using MoveDirection = InputReader.MoveDirection;
 
-[CreateAssetMenu(fileName = "ChangeLaneAction", menuName = "State Machines/Actions/Change Lane")]
-public class ChangeLaneActionSO : StateActionSO
+[CreateAssetMenu(fileName = "ApplyHorizontalMovementAction", menuName = "State Machines/Actions/ApplyHorizontalMovementAction")]
+public class ApplyHorizontalMovementActionSO : StateActionSO
 {
     [SerializeField] private float _laneChangeSpeed = default;
 
-    protected override StateAction CreateAction() => new ChangeLaneAction(_laneChangeSpeed);
+    protected override StateAction CreateAction() => new ApplyHorizontalMovementAction(_laneChangeSpeed);
 }
 
-public class ChangeLaneAction : StateAction
+public class ApplyHorizontalMovementAction : StateAction
 {
     private Protagonist _protagonist;
     private float _laneChangeSpeed;
 
-    private float target;
+    private Vector3 TargetPosition;
+    private float lane;
 
-    public ChangeLaneAction(float laneChangeSpeed)
+    public ApplyHorizontalMovementAction(float laneChangeSpeed)
     {
         this._laneChangeSpeed = laneChangeSpeed;
     }
@@ -30,14 +31,14 @@ public class ChangeLaneAction : StateAction
 
     public override void OnUpdate()
     {
-        _protagonist.TargetPosition = new Vector3()
+        TargetPosition = new Vector3()
         {
-            x = target,
+            x = lane,
             y = _protagonist.transform.position.y,
             z = _protagonist.transform.position.z
         };
 
-        _protagonist.transform.localPosition = Vector3.MoveTowards(_protagonist.transform.localPosition, _protagonist.TargetPosition, _laneChangeSpeed * Time.deltaTime);
+        ApplyMovement();
         if (_protagonist.MoveInput != MoveDirection.None)
         {
             ChangeLane(_protagonist.MoveInput);
@@ -55,7 +56,11 @@ public class ChangeLaneAction : StateAction
         }
 
         _protagonist.CurrentLane = targetLane;
-        //_protagonist.TargetPosition = Vector3.right * (int)_protagonist.CurrentLane * _protagonist.Data.LaneOffset;
-        target = (int)_protagonist.CurrentLane * _protagonist.Data.LaneOffset;
+        lane = (int)_protagonist.CurrentLane * _protagonist.Data.LaneOffset;
+    }
+
+    private void ApplyMovement()
+    {
+        _protagonist.transform.localPosition = Vector3.MoveTowards(_protagonist.transform.localPosition, TargetPosition, _laneChangeSpeed * Time.deltaTime);
     }
 }
