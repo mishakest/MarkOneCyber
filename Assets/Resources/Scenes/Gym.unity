@@ -60039,6 +60039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da19c11da37272740baf58a3e15d69cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Character: {fileID: 1249684762}
   Data: {fileID: 11400000, guid: 9d442749448873343bd95a69d9ba4bac, type: 2}
   _inputReader: {fileID: 11400000, guid: 44ef24e90d8608240b007bd7c2e02524, type: 2}
   _blobShadow: {fileID: 850536825}
