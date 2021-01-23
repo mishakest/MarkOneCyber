@@ -11,7 +11,7 @@ public class MoveState : State
 
     protected Vector3 velocity;
 
-    public MoveState(Actor actor, ActorData data, StateMachine stateMachine, string animationName) : base(actor, data, stateMachine, animationName)
+    public MoveState(Actor actor, ActorData data, StateMachineOld stateMachine, string animationName) : base(actor, data, stateMachine, animationName)
     {
     }
 

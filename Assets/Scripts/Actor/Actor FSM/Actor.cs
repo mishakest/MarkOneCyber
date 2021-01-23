@@ -18,7 +18,7 @@ public class Actor : MonoBehaviour
 
     [Header("Data")]
     public ActorData Data;
-    public StateMachine StateMachine { get; private set; }
+    public StateMachineOld StateMachine { get; private set; }
 
     #endregion
     #region [MONO COPMONENTS]
@@ -52,7 +52,7 @@ public class Actor : MonoBehaviour
 
     private void Awake()
     {
-        StateMachine = new StateMachine();
+        StateMachine = new StateMachineOld();
 
         CurrentLane = Lane.Middle;
 

@@ -3,7 +3,7 @@
 public class SlideState :MoveState
 {
 
-    public SlideState(Actor actor, ActorData data, StateMachine stateMachine, string animationName) : base(actor, data, stateMachine, animationName)
+    public SlideState(Actor actor, ActorData data, StateMachineOld stateMachine, string animationName) : base(actor, data, stateMachine, animationName)
     {
     }
 

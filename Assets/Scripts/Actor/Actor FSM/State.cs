@@ -6,12 +6,12 @@ public abstract class State
 {
     protected Actor actor;
     protected ActorData data;
-    protected StateMachine stateMachine;
+    protected StateMachineOld stateMachine;
     protected float startTime;
 
     private string animationName;
 
-    public State(Actor actor, ActorData data, StateMachine stateMachine, string animationName)
+    public State(Actor actor, ActorData data, StateMachineOld stateMachine, string animationName)
     {
         this.actor = actor;
         this.data = data;
