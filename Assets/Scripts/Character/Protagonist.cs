@@ -6,25 +6,33 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Protagonist : MonoBehaviour
 {
-    public Character Character;
+    public Character Character { get; private set; }
+    public ProtagonistPreferencesSO Preferences => _preferences;
+
+    [SerializeField] private InputReader _inputReader = default;
+
+    [SerializeField] private ProtagonistPreferencesSO _preferences = default;
+    [SerializeField] private ProtagonistStatusEventChannelSO _deadEventChannel = default;
+    [SerializeField] private CharacterSpawnEventChannelSO _spawnEventChannel = default;
+
+    [Header("Attached Objetcs Preferences")]
+    [SerializeField] private GameObject _blobShadow = default;
+    [SerializeField] private Transform _groundCheck = default;
+    [SerializeField] private LayerMask _whatIsGround = default;
+    [Range(0.1f, 0.5f)]
+    [SerializeField] private float _groundCheckRadius = 0.2f;
+
 
     public bool JumpInput { get; private set; }
     public bool SlideInput { get; private set; }
+    public bool IsDead { get; private set; }
 
     public InputReader.MoveDirection MoveInput { get; private set; }
     public Lane CurrentLane { get; set; }
 
-    public CapsuleCollider Collider;
+    public CapsuleCollider Collider { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
 
-    public ActorData Data = default;
-
-    [SerializeField] private InputReader _inputReader = default;
-    [Header("Child Objects")]
-    [SerializeField] private GameObject _blobShadow = default;
-    [SerializeField] private Transform _groundCheck = default;
-
-    public bool JumpPressed { get; set; }
 
     private void OnEnable()
     {
@@ -40,15 +48,23 @@ public class Protagonist : MonoBehaviour
         _inputReader.MoveEvent -= OnMove;
     }
 
+    private void Awake()
+    {
+        _spawnEventChannel.RaiseEvent(this.transform);
+        Character = GetComponentInChildren<Character>();
+        Collider = GetComponent<CapsuleCollider>();
+        Rigidbody = GetComponent<Rigidbody>();
+        IsDead = false;
+    }
+
     private void Start()
     {
-        Rigidbody = GetComponent<Rigidbody>();
         CurrentLane = Lane.Middle;
     }
 
     public bool CheckIfTouchingGround()
     {
-        var info = Physics.OverlapSphere(_groundCheck.position, Data.GroundCheckRadius, Data.WhatIsGround);
+        var info = Physics.OverlapSphere(_groundCheck.position, _groundCheckRadius, _whatIsGround);
 
         return info.Length > 0;
     }
@@ -71,4 +87,16 @@ public class Protagonist : MonoBehaviour
 
     public void EnableShadow() => _blobShadow.SetActive(true);
     public void DisableShadow() => _blobShadow.SetActive(false);
+    public void Die()
+    {
+        IsDead = true;
+        _deadEventChannel.RaiseEvent();
+    }
+}
+
+public enum Lane
+{
+    Left = -1,
+    Middle = 0,
+    Right = 1
 }

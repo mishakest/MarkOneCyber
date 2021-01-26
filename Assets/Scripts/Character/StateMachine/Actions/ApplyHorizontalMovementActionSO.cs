@@ -56,7 +56,7 @@ public class ApplyHorizontalMovementAction : StateAction
         }
 
         _protagonist.CurrentLane = targetLane;
-        lane = (int)_protagonist.CurrentLane * _protagonist.Data.LaneOffset;
+        lane = (int)_protagonist.CurrentLane * _protagonist.Preferences.LaneOffset;
     }
 
     private void ApplyMovement()

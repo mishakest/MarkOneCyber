@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 1435745270}
   - component: {fileID: 1435745269}
   m_Layer: 0
-  m_Name: Settings
+  m_Name: Start settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trackProcessorChannel: {fileID: 11400000, guid: 16d44c7883b50bc4a88ebcb5e6b4e259, type: 2}
   _chunk: {fileID: 4207429012595328716, guid: 06bce2f564d0e084b8d4017fb2d510c0, type: 3}
-  _startingSceneSpeed: 50
+  _startingSceneSpeed: 20
 --- !u!4 &1435745270
 Transform:
   m_ObjectHideFlags: 0
