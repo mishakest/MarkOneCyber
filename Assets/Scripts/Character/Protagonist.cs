@@ -6,6 +6,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Protagonist : MonoBehaviour
 {
+    [SerializeField] private InputReader _inputReader = default;
+    [Header("Child Objects")]
+    [SerializeField] private GameObject _blobShadow = default;
+    [SerializeField] private Transform _groundCheck = default;
+
     public ProtagonistDataSO ProtagonistData = default;
     public ProtagonistSO CharacterSO = default;
 
@@ -15,17 +20,12 @@ public class Protagonist : MonoBehaviour
     public InputReader.MoveDirection MoveInput { get; private set; }
     public Lane CurrentLane { get; set; }
 
-
-    public CapsuleCollider Collider;
+    //todo: check this if can't access to the colldier make it public
+    private CapsuleCollider Collider;
     public Rigidbody Rigidbody { get; private set; }
 
     public ActorData Data = default;
 
-
-    [SerializeField] private InputReader _inputReader = default;
-    [Header("Child Objects")]
-    [SerializeField] private GameObject _blobShadow = default;
-    [SerializeField] private Transform _groundCheck = default;
 
     private void OnEnable()
     {
@@ -43,6 +43,7 @@ public class Protagonist : MonoBehaviour
 
     private void Start()
     {
+        Collider = GetComponent<CapsuleCollider>();
         Rigidbody = GetComponent<Rigidbody>();
         CurrentLane = Lane.Middle;
     }

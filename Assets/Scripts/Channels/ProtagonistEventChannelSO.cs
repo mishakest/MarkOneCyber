@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [CreateAssetMenu(menuName = "Events/Protagonist Event Channel")]
 public class ProtagonistEventChannelSO : ScriptableObject
 {
-    public UnityAction<ProtagonistDataSO> OnDataChangeRequest;
+    public event UnityAction<ProtagonistDataSO> OnDataChangeRequest;
 
     public void RaiseEvent(ProtagonistDataSO protagonistData)
     {
