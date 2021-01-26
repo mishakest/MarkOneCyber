@@ -8,12 +8,11 @@ public class TrackProcessor : MonoBehaviour
     [SerializeField] private TrackProcessorChannelSO _trackProcessorChannel;
 
     [Header("Scene Objects")]
-    [SerializeField] private Actor _player;
     [SerializeField] private ChunksPlacer _chunksPlacer;
 
     private void Start()
     {
-        _player.Data.LaneOffset = _trackProcessorChannel.LaneOffset;
+        //_player.Data.LaneOffset = _trackProcessorChannel.LaneOffset;
     }
 
     private void Update()

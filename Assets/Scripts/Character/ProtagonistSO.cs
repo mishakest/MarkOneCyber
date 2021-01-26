@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "ProtagonistSO", menuName = "Protagonist/Character SO")]
+[CreateAssetMenu(fileName = "ProtagonistSO", menuName = "Protagonist/Protagonist SO")]
 public class ProtagonistSO : ScriptableObject
 {
-    public GameObject ProtagonistPrefab;
+    public Character ProtagonistPrefab;
 }

@@ -39,7 +39,7 @@ public class AnimatorParameterAction : StateAction
 
     public override void Awake(StateMachine stateMachine)
     {
-        _animator = stateMachine.GetComponent<Protagonist>().Character.Animator;
+        _animator = stateMachine.GetComponent<Protagonist>().CharacterSO.ProtagonistPrefab.Animator;
     }
 
     public override void OnStateEnter()

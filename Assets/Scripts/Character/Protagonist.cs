@@ -11,7 +11,7 @@ public class Protagonist : MonoBehaviour
     [SerializeField] private GameObject _blobShadow = default;
     [SerializeField] private Transform _groundCheck = default;
 
-    public ProtagonistDataSO ProtagonistData = default;
+    public ProtagonistDataSO Data = default;
     public ProtagonistSO CharacterSO = default;
 
     public bool JumpInput { get; private set; }
@@ -21,10 +21,8 @@ public class Protagonist : MonoBehaviour
     public Lane CurrentLane { get; set; }
 
     //todo: check this if can't access to the colldier make it public
-    private CapsuleCollider Collider;
+    public CapsuleCollider Collider { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
-
-    public ActorData Data = default;
 
 
     private void OnEnable()
@@ -73,4 +71,11 @@ public class Protagonist : MonoBehaviour
 
     public void EnableShadow() => _blobShadow.SetActive(true);
     public void DisableShadow() => _blobShadow.SetActive(false);
+}
+
+public enum Lane
+{
+    Left,
+    Middle,
+    Right
 }
