@@ -6,13 +6,21 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Protagonist : MonoBehaviour
 {
+    public ProtagonistSO ProtagonistSO;
+    public ProtagonistStatusSO Status => _status;
+
     [SerializeField] private InputReader _inputReader = default;
-    [Header("Child Objects")]
+
+    [SerializeField] private ProtagonistStatusSO _status = default;
+    [SerializeField] private ProtagonistStatusEventChannelSO _statusEventChannel = default;
+
+    [Header("Attached Objetcs Preferences")]
     [SerializeField] private GameObject _blobShadow = default;
     [SerializeField] private Transform _groundCheck = default;
+    [SerializeField] private LayerMask _whatIsGround = default;
+    [Range(0.1f, 0.5f)]
+    [SerializeField] private float _groundCheckRadius = 0.2f;
 
-    public ProtagonistDataSO Data = default;
-    public ProtagonistSO CharacterSO = default;
 
     public bool JumpInput { get; private set; }
     public bool SlideInput { get; private set; }
@@ -48,7 +56,7 @@ public class Protagonist : MonoBehaviour
 
     public bool CheckIfTouchingGround()
     {
-        var info = Physics.OverlapSphere(_groundCheck.position, Data.GroundCheckRadius, Data.WhatIsGround);
+        var info = Physics.OverlapSphere(_groundCheck.position, _groundCheckRadius, _whatIsGround);
 
         return info.Length > 0;
     }

@@ -2,11 +2,11 @@
 using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Events/Protagonist Event Channel")]
-public class ProtagonistEventChannelSO : ScriptableObject
+public class ProtagonistStatusEventChannelSO : ScriptableObject
 {
-    public event UnityAction<ProtagonistDataSO> OnDataChangeRequest;
+    public event UnityAction<ProtagonistStatusSO> OnDataChangeRequest;
 
-    public void RaiseEvent(ProtagonistDataSO protagonistData)
+    public void RaiseEvent(ProtagonistStatusSO protagonistData)
     {
         if (OnDataChangeRequest != null)
         {
