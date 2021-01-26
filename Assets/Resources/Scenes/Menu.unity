@@ -560,6 +560,7 @@ MonoBehaviour:
   _loadEventChannel: {fileID: 11400000, guid: e0dd0b3ea1a3b354ca44a10ed5949110, type: 2}
   _locationsToLoad:
   - {fileID: 11400000, guid: e738182134f5edc4d919900010159e09, type: 2}
+  _enableLoadingScreen: 0
 --- !u!1 &1710742254
 GameObject:
   m_ObjectHideFlags: 0
