@@ -42,7 +42,6 @@ public class Protagonist : MonoBehaviour
 
     private void Start()
     {
-        IsDead = false;
         Rigidbody = GetComponent<Rigidbody>();
         CurrentLane = Lane.Middle;
     }
