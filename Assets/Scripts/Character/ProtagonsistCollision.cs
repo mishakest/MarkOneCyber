@@ -9,9 +9,4 @@ public class ProtagonsistCollision : MonoBehaviour
     {
         collision.gameObject.HandleComponent<Obstacle>(component => Destroy(this.gameObject));
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        other.gameObject.HandleComponent<Obstacle>(component => Destroy(this.gameObject));
-    }
 }

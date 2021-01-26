@@ -14,17 +14,17 @@ public class Protagonist : MonoBehaviour
     public InputReader.MoveDirection MoveInput { get; private set; }
     public Lane CurrentLane { get; set; }
 
+
     public CapsuleCollider Collider;
     public Rigidbody Rigidbody { get; private set; }
 
     public ActorData Data = default;
 
+
     [SerializeField] private InputReader _inputReader = default;
     [Header("Child Objects")]
     [SerializeField] private GameObject _blobShadow = default;
     [SerializeField] private Transform _groundCheck = default;
-
-    public bool JumpPressed { get; set; }
 
     private void OnEnable()
     {
@@ -42,6 +42,7 @@ public class Protagonist : MonoBehaviour
 
     private void Start()
     {
+        IsDead = false;
         Rigidbody = GetComponent<Rigidbody>();
         CurrentLane = Lane.Middle;
     }
