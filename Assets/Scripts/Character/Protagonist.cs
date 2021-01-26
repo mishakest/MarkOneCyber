@@ -21,7 +21,7 @@ public class Protagonist : MonoBehaviour
 
     [SerializeField] private InputReader _inputReader = default;
     [Header("Child Objects")]
-    [SerializeField] private Transform _blobShadow = default;
+    [SerializeField] private GameObject _blobShadow = default;
     [SerializeField] private Transform _groundCheck = default;
 
     public bool JumpPressed { get; set; }
@@ -68,4 +68,7 @@ public class Protagonist : MonoBehaviour
         Collider.center = center;
         Collider.height = height;
     }
+
+    public void EnableShadow() => _blobShadow.SetActive(true);
+    public void DisableShadow() => _blobShadow.SetActive(false);
 }
