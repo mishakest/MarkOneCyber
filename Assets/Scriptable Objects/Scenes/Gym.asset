@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f477f2809c8a0f04bb47d1db174b99ea, type: 3}
-  m_Name: Menu
+  m_Name: Gym
   m_EditorClassIdentifier: 
-  SceneName: Menu
+  Scene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}

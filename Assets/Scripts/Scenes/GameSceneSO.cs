@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scenes/Scene SO")]
 public class GameSceneSO : ScriptableObject
 {
-    public string SceneName;
+    public SceneAsset Scene;
 }

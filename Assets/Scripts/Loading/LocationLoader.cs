@@ -35,7 +35,7 @@ public class LocationLoader : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == _initializationScene.SceneName)
+        if (SceneManager.GetActiveScene().name == _initializationScene.Scene.name)
         {
             LoadMainMenu();
         }
@@ -54,7 +54,7 @@ public class LocationLoader : MonoBehaviour
 
         for (int i = 0; i < locationsToLoad.Length; ++i)
         {
-            var currentSceneName = locationsToLoad[i].SceneName;
+            var currentSceneName = locationsToLoad[i].Scene.name;
 
             if (!CheckLoadState(currentSceneName))
             {
@@ -79,7 +79,7 @@ public class LocationLoader : MonoBehaviour
 
     private void SetActiveScene(AsyncOperation asyncOperation)
     {
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(_activeScene.SceneName));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(_activeScene.Scene.name));
     }
 
     private void AddScenesToUnload()
@@ -88,7 +88,7 @@ public class LocationLoader : MonoBehaviour
         {
             var scene = SceneManager.GetSceneAt(i);
 
-            if (scene.name != _initializationScene.SceneName)
+            if (scene.name != _initializationScene.Scene.name)
             {
                 Debug.Log("Added scene to unload = " + scene.name);
                 _scenesToUnload.Add(scene);
