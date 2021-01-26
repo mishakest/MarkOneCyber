@@ -6,13 +6,20 @@ using UnityEngine;
 public class TrackProcessor : MonoBehaviour
 {
     [SerializeField] private TrackProcessorChannelSO _trackProcessorChannel;
+    [SerializeField] private ProtagonistStatusEventChannelSO _protagonistStatusChannel;
+    [SerializeField] private ProtagonistStatusSO _protagonistStatus;
 
-    [Header("Scene Objects")]
+    [Space]
+    [SerializeField] private float _startAnimationSpeedMultiplyer;
+
+    [Space]
     [SerializeField] private ChunksPlacer _chunksPlacer;
 
     private void Start()
     {
-        //_player.Data.LaneOffset = _trackProcessorChannel.LaneOffset;
+        _protagonistStatus.LaneOffset = _trackProcessorChannel.LaneOffset;
+        _protagonistStatus.AnimatiionSpeedMultiplyer = _startAnimationSpeedMultiplyer;
+        _protagonistStatus.IsDead = false;
     }
 
     private void Update()

@@ -6,13 +6,14 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Protagonist : MonoBehaviour
 {
-    public ProtagonistSO ProtagonistSO;
+    public Character Character { get; private set; }
     public ProtagonistStatusSO Status => _status;
 
     [SerializeField] private InputReader _inputReader = default;
 
     [SerializeField] private ProtagonistStatusSO _status = default;
     [SerializeField] private ProtagonistStatusEventChannelSO _statusEventChannel = default;
+    [SerializeField] private CharacterSpawnEventChannelSO _spawnEventChannel = default;
 
     [Header("Attached Objetcs Preferences")]
     [SerializeField] private GameObject _blobShadow = default;
@@ -28,7 +29,6 @@ public class Protagonist : MonoBehaviour
     public InputReader.MoveDirection MoveInput { get; private set; }
     public Lane CurrentLane { get; set; }
 
-    //todo: check this if can't access to the colldier make it public
     public CapsuleCollider Collider { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
 
@@ -47,10 +47,16 @@ public class Protagonist : MonoBehaviour
         _inputReader.MoveEvent -= OnMove;
     }
 
-    private void Start()
+    private void Awake()
     {
+        _spawnEventChannel.RaiseEvent(this.transform);
+        Character = GetComponentInChildren<Character>();
         Collider = GetComponent<CapsuleCollider>();
         Rigidbody = GetComponent<Rigidbody>();
+    }
+
+    private void Start()
+    {
         CurrentLane = Lane.Middle;
     }
 
@@ -83,7 +89,7 @@ public class Protagonist : MonoBehaviour
 
 public enum Lane
 {
-    Left,
-    Middle,
-    Right
+    Left = -1,
+    Middle = 0,
+    Right = 1
 }
