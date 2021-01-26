@@ -7,12 +7,12 @@ using UnityEngine;
 public class Protagonist : MonoBehaviour
 {
     public Character Character { get; private set; }
-    public ProtagonistStatusSO Status => _status;
+    public ProtagonistPreferencesSO Preferences => _preferences;
 
     [SerializeField] private InputReader _inputReader = default;
 
-    [SerializeField] private ProtagonistStatusSO _status = default;
-    [SerializeField] private ProtagonistStatusEventChannelSO _statusEventChannel = default;
+    [SerializeField] private ProtagonistPreferencesSO _preferences = default;
+    [SerializeField] private ProtagonistStatusEventChannelSO _deadEventChannel = default;
     [SerializeField] private CharacterSpawnEventChannelSO _spawnEventChannel = default;
 
     [Header("Attached Objetcs Preferences")]
@@ -25,6 +25,7 @@ public class Protagonist : MonoBehaviour
 
     public bool JumpInput { get; private set; }
     public bool SlideInput { get; private set; }
+    public bool IsDead { get; private set; }
 
     public InputReader.MoveDirection MoveInput { get; private set; }
     public Lane CurrentLane { get; set; }
@@ -53,6 +54,7 @@ public class Protagonist : MonoBehaviour
         Character = GetComponentInChildren<Character>();
         Collider = GetComponent<CapsuleCollider>();
         Rigidbody = GetComponent<Rigidbody>();
+        IsDead = false;
     }
 
     private void Start()
@@ -85,6 +87,11 @@ public class Protagonist : MonoBehaviour
 
     public void EnableShadow() => _blobShadow.SetActive(true);
     public void DisableShadow() => _blobShadow.SetActive(false);
+    public void Die()
+    {
+        IsDead = true;
+        _deadEventChannel.RaiseEvent();
+    }
 }
 
 public enum Lane

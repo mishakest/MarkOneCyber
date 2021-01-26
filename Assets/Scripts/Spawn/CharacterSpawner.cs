@@ -2,7 +2,7 @@
 
 public class CharacterSpawner : MonoBehaviour
 {
-    [SerializeField] private CharacterSpawnEventChannelSO _spawnEventChannel;
+    [SerializeField] private CharacterSpawnEventChannelSO _spawnEventChannel = default;
 
     public ProtagonistSO ProtagonistToSpawn;
 

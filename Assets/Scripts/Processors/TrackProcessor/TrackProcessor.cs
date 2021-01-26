@@ -7,7 +7,7 @@ public class TrackProcessor : MonoBehaviour
 {
     [SerializeField] private TrackProcessorChannelSO _trackProcessorChannel;
     [SerializeField] private ProtagonistStatusEventChannelSO _protagonistStatusChannel;
-    [SerializeField] private ProtagonistStatusSO _protagonistStatus;
+    [SerializeField] private ProtagonistPreferencesSO _protagonistPreferences;
 
     [Space]
     [SerializeField] private float _startAnimationSpeedMultiplyer;
@@ -15,11 +15,20 @@ public class TrackProcessor : MonoBehaviour
     [Space]
     [SerializeField] private ChunksPlacer _chunksPlacer;
 
+    private void OnEnable()
+    {
+        _protagonistStatusChannel.OnProtagonistDeath += Stop;
+    }
+
+    private void OnDisable()
+    {
+        _protagonistStatusChannel.OnProtagonistDeath -= Stop;
+    }
+
     private void Start()
     {
-        _protagonistStatus.LaneOffset = _trackProcessorChannel.LaneOffset;
-        _protagonistStatus.AnimatiionSpeedMultiplyer = _startAnimationSpeedMultiplyer;
-        _protagonistStatus.IsDead = false;
+        _protagonistPreferences.LaneOffset = _trackProcessorChannel.LaneOffset;
+        _protagonistPreferences.AnimatiionSpeedMultiplyer = _startAnimationSpeedMultiplyer;
     }
 
     private void Update()
@@ -33,5 +42,10 @@ public class TrackProcessor : MonoBehaviour
         {
             chunk.Move(Vector3.back * _trackProcessorChannel.CurrentSpeed);
         }
+    }
+
+    private void Stop()
+    {
+        _trackProcessorChannel.CurrentSpeed = 0.0f;
     }
 }

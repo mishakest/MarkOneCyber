@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "ProtagonistStatus", menuName = "Protagonist/Protagonist Status")]
-public class ProtagonistStatusSO : ScriptableObject
+public class ProtagonistPreferencesSO : ScriptableObject
 {
     [HideInInspector] public float LaneOffset;
     [HideInInspector] public float AnimatiionSpeedMultiplyer;
-
-    [HideInInspector] public bool IsDead;
 }

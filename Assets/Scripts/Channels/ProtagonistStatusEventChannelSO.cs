@@ -4,13 +4,13 @@ using UnityEngine.Events;
 [CreateAssetMenu(menuName = "Events/Protagonist Event Channel")]
 public class ProtagonistStatusEventChannelSO : ScriptableObject
 {
-    public event UnityAction<ProtagonistStatusSO> OnDataChangeRequest;
+    public event UnityAction OnProtagonistDeath;
 
-    public void RaiseEvent(ProtagonistStatusSO protagonistData)
+    public void RaiseEvent()
     {
-        if (OnDataChangeRequest != null)
+        if (OnProtagonistDeath != null)
         {
-            OnDataChangeRequest.Invoke(protagonistData);
+            OnProtagonistDeath.Invoke();
         }
         else
         {
