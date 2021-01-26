@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "ProtagonistData", menuName = "Data/Protagonist Data")]
+[CreateAssetMenu(fileName = "ProtagonistData", menuName = "Protagonist/Protagonist Data")]
 public class ProtagonistDataSO : ScriptableObject
 {
-    [Header("Chacracter")]
-    public Character Chracter;
-
     [Header("Movement Preferences")]
     public float LaneChangeSpeed;
     public float JumpForce;

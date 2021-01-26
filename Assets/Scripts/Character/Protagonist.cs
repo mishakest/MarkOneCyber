@@ -6,7 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Protagonist : MonoBehaviour
 {
-    public Character Character;
+    public ProtagonistDataSO ProtagonistData = default;
+    public ProtagonistSO CharacterSO = default;
 
     public bool JumpInput { get; private set; }
     public bool SlideInput { get; private set; }
