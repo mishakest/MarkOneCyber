@@ -50059,11 +50059,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937bbe1c7856ac4458d609796b09518c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trackProcessorChannel: {fileID: 11400000, guid: 16d44c7883b50bc4a88ebcb5e6b4e259, type: 2}
-  _protagonistStatusChannel: {fileID: 11400000, guid: 1d6d2413b72244641bf3c02baa98ab4f, type: 2}
+  _data: {fileID: 11400000, guid: d21241bf579f842449edacc425ae5f60, type: 2}
   _protagonistPreferences: {fileID: 11400000, guid: aa1709dcd1a5f5846b122787a0f31aa8, type: 2}
-  _startAnimationSpeedMultiplyer: 1
-  _chunksPlacer: {fileID: 925366263}
+  _protagonistStatus: {fileID: 11400000, guid: 1d6d2413b72244641bf3c02baa98ab4f, type: 2}
+  _chunkPlacer: {fileID: 925366263}
+  _destroyObstaclesRadius: 6
+  _speedMutiplierCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.016666668
+      outSlope: 0.016666668
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 120
+      value: 3
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _animationMultiplierCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.004166667
+      outSlope: 0.004166667
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 120
+      value: 1.5
+      inSlope: 0.004166667
+      outSlope: 0.004166667
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _movingObjectsMultiplierCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _drawGizmos: 1
 --- !u!1 &1414613922
 GameObject:
   m_ObjectHideFlags: 0
@@ -58751,7 +58806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 44ef24e90d8608240b007bd7c2e02524, type: 2}
   _preferences: {fileID: 11400000, guid: aa1709dcd1a5f5846b122787a0f31aa8, type: 2}
-  _deadEventChannel: {fileID: 11400000, guid: 1d6d2413b72244641bf3c02baa98ab4f, type: 2}
+  _statusEventChannel: {fileID: 11400000, guid: 1d6d2413b72244641bf3c02baa98ab4f, type: 2}
   _spawnEventChannel: {fileID: 11400000, guid: cd1dfdd1237f94e4ebaf7668d43d2436, type: 2}
   _blobShadow: {fileID: 850536824}
   _groundCheck: {fileID: 957584028}

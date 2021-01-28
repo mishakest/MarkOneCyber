@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d17eab10e647e624c9eaaf299ee90a85, type: 3}
-  m_Name: SetJumpAnimatorParameter
+  m_Name: SetRunMultiplierAnimatiomParameter
   m_EditorClassIdentifier: 
-  parameterType: 3
-  ParameterName: jump
-  Multiplier: {fileID: 0}
+  parameterType: 2
+  ParameterName: runMultiplier
   BoolValue: 0
   IntValue: 0
-  FloatValue: 0
-  WhenToRun: 0
+  FloatValue: 2
+  WhenToRun: 2
