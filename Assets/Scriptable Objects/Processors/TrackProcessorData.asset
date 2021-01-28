@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d17eab10e647e624c9eaaf299ee90a85, type: 3}
-  m_Name: SetJumpAnimatorParameter
+  m_Script: {fileID: 11500000, guid: 3142e5d71b895e04590792071e7d423e, type: 3}
+  m_Name: TrackProcessorData
   m_EditorClassIdentifier: 
-  parameterType: 3
-  ParameterName: jump
-  Multiplier: {fileID: 0}
-  BoolValue: 0
-  IntValue: 0
-  FloatValue: 0
-  WhenToRun: 0
+  StartingSpeed: 20
+  CurrentSpeed: 57.423477
+  LaneOffset: 1.66667

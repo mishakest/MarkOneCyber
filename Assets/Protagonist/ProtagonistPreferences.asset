@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ProtagonistPreferences
   m_EditorClassIdentifier: 
   LaneOffset: 0
-  AnimatiionSpeedMultiplyer: 0
+  AnimatorMultiplierSO: {fileID: 11400000, guid: 1afc08cdc6cb1ea4ba463571a08cc6ab, type: 2}

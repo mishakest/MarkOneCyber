@@ -12,7 +12,7 @@ public class Protagonist : MonoBehaviour
     [SerializeField] private InputReader _inputReader = default;
 
     [SerializeField] private ProtagonistPreferencesSO _preferences = default;
-    [SerializeField] private ProtagonistStatusEventChannelSO _deadEventChannel = default;
+    [SerializeField] private ProtagonistStatusEventChannelSO _statusEventChannel = default;
     [SerializeField] private CharacterSpawnEventChannelSO _spawnEventChannel = default;
 
     [Header("Attached Objetcs Preferences")]
@@ -62,6 +62,16 @@ public class Protagonist : MonoBehaviour
         CurrentLane = Lane.Middle;
     }
 
+    private void Update()
+    {
+        Character.Animator.SetFloat("runMultiplier", _preferences.AnimatorMultiplier);
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Revive();
+        }
+    }
+
     public bool CheckIfTouchingGround()
     {
         var info = Physics.OverlapSphere(_groundCheck.position, _groundCheckRadius, _whatIsGround);
@@ -90,7 +100,13 @@ public class Protagonist : MonoBehaviour
     public void Die()
     {
         IsDead = true;
-        _deadEventChannel.RaiseEvent();
+        _statusEventChannel.RaiseEvent(IsDead);
+    }
+
+    public void Revive()
+    {
+        IsDead = false;
+        _statusEventChannel.RaiseEvent(IsDead);
     }
 }
 

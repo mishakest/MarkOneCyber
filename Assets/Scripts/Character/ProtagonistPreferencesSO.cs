@@ -4,5 +4,5 @@
 public class ProtagonistPreferencesSO : ScriptableObject
 {
     [HideInInspector] public float LaneOffset;
-    [HideInInspector] public float AnimatiionSpeedMultiplyer;
+    public float AnimatorMultiplier = 1;
 }

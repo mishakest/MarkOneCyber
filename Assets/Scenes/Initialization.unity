@@ -172,52 +172,6 @@ MonoBehaviour:
   _loadingInterface: {fileID: 0}
   _loadingProgressBar: {fileID: 0}
   _loadEventChannel: {fileID: 11400000, guid: e0dd0b3ea1a3b354ca44a10ed5949110, type: 2}
---- !u!1 &1435745268
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1435745270}
-  - component: {fileID: 1435745269}
-  m_Layer: 0
-  m_Name: Start settings
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1435745269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435745268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba8c630bf84e5d841b65bcbd3e86c7e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _trackProcessorChannel: {fileID: 11400000, guid: 16d44c7883b50bc4a88ebcb5e6b4e259, type: 2}
-  _chunk: {fileID: 4207429012595328716, guid: 06bce2f564d0e084b8d4017fb2d510c0, type: 3}
-  _startingSceneSpeed: 20
---- !u!4 &1435745270
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435745268}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1678921523
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +222,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1828284220
 GameObject:
@@ -382,5 +336,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

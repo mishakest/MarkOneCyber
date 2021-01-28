@@ -5,17 +5,13 @@ using UnityEngine.Events;
 public class ProtagonistStatusEventChannelSO : ScriptableObject
 {
     public event UnityAction OnProtagonistDeath;
+    public event UnityAction OnProtagonistRevive;
 
-    public void RaiseEvent()
+    public void RaiseEvent(bool isDead)
     {
-        if (OnProtagonistDeath != null)
-        {
-            OnProtagonistDeath.Invoke();
-        }
+        if (isDead)
+            OnProtagonistDeath?.Invoke();
         else
-        {
-            Debug.LogWarning("A protagonist data change was requested, but nobody picked it up." +
-               " Make sure it's listening on this Load Event channel.");
-        }
+            OnProtagonistRevive?.Invoke();
     }
 }
