@@ -12,9 +12,14 @@ public class ChunksPool : MonoBehaviour
     public List<Chunk> CreatedOnRunChunks { get; private set; }
     [HideInInspector] public List<Chunk> CreatedChunks = new List<Chunk>();
 
+    [HideInInspector] public bool HasBeenPrewarmed = false;
+
     private void Awake()
     {
         CreatedOnRunChunks = new List<Chunk>();
+
+        if (!HasBeenPrewarmed || CreatedChunks.Count == 0)
+            Generate();
     }
 
     private void Generate()
@@ -29,6 +34,7 @@ public class ChunksPool : MonoBehaviour
                 CreatedChunks.Add(createdChunk.GetComponent<Chunk>());
             }
         }
+        HasBeenPrewarmed = true;
     }
 
     private void Distinct()
@@ -43,6 +49,7 @@ public class ChunksPool : MonoBehaviour
         }
 
         CreatedChunks.Clear();
+        HasBeenPrewarmed = false;
     }
 
     public void Reload()
