@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using MoveDirection = InputReader.MoveDirection;
-using SwipeData = InputTracker.SwipeData;
 
 public class InputSender : MonoBehaviour
 {
@@ -25,9 +24,9 @@ public class InputSender : MonoBehaviour
         _inputTracker.TrackInput();
     }
 
-    private void SendInput(SwipeData data)
+    private void SendInput(InputTracker.SwipeDirection direction)
     {
-        switch (data.Direction)
+        switch (direction)
         {
             case InputTracker.SwipeDirection.Up:
                 _inputReader.InvokeJumpEvent();
@@ -44,6 +43,6 @@ public class InputSender : MonoBehaviour
         }
 
         if (_enableLogging)
-            _logger.Log(data);
+            _logger.Log(direction);
     }
 }

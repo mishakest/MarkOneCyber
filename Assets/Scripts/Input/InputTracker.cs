@@ -3,10 +3,10 @@ using UnityEngine.Events;
 
 public abstract class InputTracker : ScriptableObject
 {
-    public event UnityAction<SwipeData> OnInput = delegate { };
+    public event UnityAction<SwipeDirection> OnInput = delegate { };
     public abstract void TrackInput();
 
-    protected void SendData(SwipeData data) => OnInput?.Invoke(data);
+    protected void SendData(SwipeDirection direction) => OnInput?.Invoke(direction);
 
     public enum SwipeDirection
     {
@@ -14,12 +14,5 @@ public abstract class InputTracker : ScriptableObject
         Down,
         Left,
         Right
-    }
-
-    public struct SwipeData
-    {
-        public Vector2 StartPosition;
-        public Vector2 EndPosition;
-        public SwipeDirection Direction;
     }
 }

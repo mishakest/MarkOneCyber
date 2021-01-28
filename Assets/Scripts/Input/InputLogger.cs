@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using SwipeData = InputTracker.SwipeData;
 
 [CreateAssetMenu(fileName = "InputLogger", menuName = "Input/Input Logger")]
 public class InputLogger : ScriptableObject
 {
-    public void Log(SwipeData data)
+    public void Log(InputTracker.SwipeDirection direction)
     {
-        Debug.Log($"Input with direction {data.Direction}");
+        Debug.Log($"Input with direction {direction}");
     }
 }

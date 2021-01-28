@@ -6,30 +6,13 @@ public class KeyboardInputTrackerSO : InputTracker
 {
     public override void TrackInput()
     {
-        SwipeDirection direction = default;
-
         if (Input.GetKeyDown(KeyCode.A))
-            direction = SwipeDirection.Left;
+            SendData(SwipeDirection.Left);
         else if (Input.GetKeyDown(KeyCode.D))
-            direction = SwipeDirection.Right;
+            SendData(SwipeDirection.Right);
         else if (Input.GetKeyDown(KeyCode.Space))
-            direction = SwipeDirection.Up;
+            SendData(SwipeDirection.Up);
         else if (Input.GetKeyDown(KeyCode.S))
-            direction = SwipeDirection.Down;
-
-        if(Input.anyKeyDown)
-        {
-            SendData(direction);
-        }
-    }
-
-    private void SendData(SwipeDirection direction)
-    {
-        SwipeData swipeData = new SwipeData()
-        {
-            Direction = direction
-        };
-
-        SendData(swipeData);
+            SendData(SwipeDirection.Down);
     }
 }
