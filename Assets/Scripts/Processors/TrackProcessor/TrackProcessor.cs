@@ -69,14 +69,12 @@ public class TrackProcessor : MonoBehaviour
     {
         _isStopped = true;
         _data.CurrentSpeed = 0.0f;
-        Time.timeScale = 0.0f;
     }
 
     private void Continue()
     {
         DestroyObstaclesAroundPlayer();
         _isStopped = false;
-        Time.timeScale = 1.0f;
     }
 
     private void DestroyObstaclesAroundPlayer()
