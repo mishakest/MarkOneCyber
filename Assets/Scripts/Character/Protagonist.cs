@@ -65,11 +65,6 @@ public class Protagonist : MonoBehaviour
     private void Update()
     {
         Character.Animator.SetFloat("runMultiplier", _preferences.AnimatorMultiplier);
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Revive();
-        }
     }
 
     public bool CheckIfTouchingGround()
