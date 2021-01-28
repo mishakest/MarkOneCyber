@@ -1,25 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class InputTracker : ScriptableObject
+namespace MarkOne.Input
 {
-    public event UnityAction<SwipeData> OnInput = delegate { };
-    public abstract void TrackInput();
-
-    protected void SendData(SwipeData data) => OnInput?.Invoke(data);
-
-    public enum SwipeDirection
+    public abstract class InputTracker : ScriptableObject
     {
-        Up,
-        Down,
-        Left,
-        Right
-    }
+        public event UnityAction<SwipeDirection> OnInput = delegate { };
+        public abstract void TrackInput();
 
-    public struct SwipeData
-    {
-        public Vector2 StartPosition;
-        public Vector2 EndPosition;
-        public SwipeDirection Direction;
+        protected void SendData(SwipeDirection direction) => OnInput?.Invoke(direction);
+
+        public enum SwipeDirection
+        {
+            Up,
+            Down,
+            Left,
+            Right
+        }
     }
 }

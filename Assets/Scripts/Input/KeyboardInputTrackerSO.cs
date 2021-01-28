@@ -1,35 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "KeyboardInputTracker", menuName = "Input/Trackers/KeyboardInputTracker")]
-public class KeyboardInputTrackerSO : InputTracker
+namespace MarkOne.Input
 {
-    public override void TrackInput()
+    [CreateAssetMenu(fileName = "KeyboardInputTracker", menuName = "Input/Trackers/KeyboardInputTracker")]
+    public class KeyboardInputTrackerSO : InputTracker
     {
-        SwipeDirection direction = default;
-
-        if (Input.GetKeyDown(KeyCode.A))
-            direction = SwipeDirection.Left;
-        else if (Input.GetKeyDown(KeyCode.D))
-            direction = SwipeDirection.Right;
-        else if (Input.GetKeyDown(KeyCode.Space))
-            direction = SwipeDirection.Up;
-        else if (Input.GetKeyDown(KeyCode.S))
-            direction = SwipeDirection.Down;
-
-        if(Input.anyKeyDown)
+        public override void TrackInput()
         {
-            SendData(direction);
+            if (UnityEngine.Input.GetKeyDown(KeyCode.A))
+                SendData(SwipeDirection.Left);
+            else if (UnityEngine.Input.GetKeyDown(KeyCode.D))
+                SendData(SwipeDirection.Right);
+            else if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
+                SendData(SwipeDirection.Up);
+            else if (UnityEngine.Input.GetKeyDown(KeyCode.S))
+                SendData(SwipeDirection.Down);
         }
-    }
-
-    private void SendData(SwipeDirection direction)
-    {
-        SwipeData swipeData = new SwipeData()
-        {
-            Direction = direction
-        };
-
-        SendData(swipeData);
     }
 }

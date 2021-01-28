@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using MarkOne.StateMachine;
 using MarkOne.StateMachine.ScriptableObjects;
-using MoveDirection = InputReader.MoveDirection;
+using MoveDirection = MarkOne.Input.InputReader.MoveDirection;
 
 [CreateAssetMenu(fileName = "ApplyHorizontalMovementAction", menuName = "State Machines/Actions/ApplyHorizontalMovementAction")]
 public class ApplyHorizontalMovementActionSO : StateActionSO

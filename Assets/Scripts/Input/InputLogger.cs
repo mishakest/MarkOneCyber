@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
-using SwipeData = InputTracker.SwipeData;
 
-[CreateAssetMenu(fileName = "InputLogger", menuName = "Input/Input Logger")]
-public class InputLogger : ScriptableObject
+namespace MarkOne.Input
 {
-    public void Log(SwipeData data)
+    [CreateAssetMenu(fileName = "InputLogger", menuName = "Input/Input Logger")]
+    public class InputLogger : ScriptableObject
     {
-        Debug.Log($"Input with direction {data.Direction}");
+        public void Log(InputTracker.SwipeDirection direction)
+        {
+            Debug.Log($"Input with direction {direction}");
+        }
     }
 }
