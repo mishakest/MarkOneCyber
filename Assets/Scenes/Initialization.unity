@@ -254,8 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 44ef24e90d8608240b007bd7c2e02524, type: 2}
-  _inputTrackers:
-  - {fileID: 11400000, guid: a967f17124e9d944e96b52aaad410966, type: 2}
+  _inputTracker: {fileID: 11400000, guid: a967f17124e9d944e96b52aaad410966, type: 2}
   _logger: {fileID: 11400000, guid: c1742faefd954614ca17355b931fc52d, type: 2}
   _enableLogging: 1
 --- !u!4 &1828284223
