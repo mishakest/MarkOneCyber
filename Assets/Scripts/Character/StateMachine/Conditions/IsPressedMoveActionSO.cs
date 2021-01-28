@@ -1,4 +1,5 @@
-﻿using MarkOne.StateMachine;
+﻿using MarkOne.Input;
+using MarkOne.StateMachine;
 using MarkOne.StateMachine.ScriptableObjects;
 using UnityEngine;
 

@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "InputLogger", menuName = "Input/Input Logger")]
-public class InputLogger : ScriptableObject
+namespace MarkOne.Input
 {
-    public void Log(InputTracker.SwipeDirection direction)
+    [CreateAssetMenu(fileName = "InputLogger", menuName = "Input/Input Logger")]
+    public class InputLogger : ScriptableObject
     {
-        Debug.Log($"Input with direction {direction}");
+        public void Log(InputTracker.SwipeDirection direction)
+        {
+            Debug.Log($"Input with direction {direction}");
+        }
     }
 }

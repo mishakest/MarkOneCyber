@@ -1,48 +1,51 @@
 ﻿using UnityEngine;
-using MoveDirection = InputReader.MoveDirection;
+using MoveDirection = MarkOne.Input.InputReader.MoveDirection;
 
-public class InputSender : MonoBehaviour
+namespace MarkOne.Input
 {
-    [SerializeField] private InputReader _inputReader = default;
-    [SerializeField] private InputTracker _inputTracker = default;
-    [SerializeField] private InputLogger _logger = default;
-
-    [SerializeField] private bool _enableLogging = false;
-
-    private void OnEnable()
+    public class InputSender : MonoBehaviour
     {
-        _inputTracker.OnInput += SendInput;
-    }
+        [SerializeField] private InputReader _inputReader = default;
+        [SerializeField] private InputTracker _inputTracker = default;
+        [SerializeField] private InputLogger _logger = default;
 
-    private void OnDisable()
-    {
-        _inputTracker.OnInput -= SendInput;
-    }
+        [SerializeField] private bool _enableLogging = false;
 
-    private void Update()
-    {
-        _inputTracker.TrackInput();
-    }
-
-    private void SendInput(InputTracker.SwipeDirection direction)
-    {
-        switch (direction)
+        private void OnEnable()
         {
-            case InputTracker.SwipeDirection.Up:
-                _inputReader.InvokeJumpEvent();
-                break;
-            case InputTracker.SwipeDirection.Down:
-                _inputReader.InvokeSlideEvent();
-                break;
-            case InputTracker.SwipeDirection.Left:
-                _inputReader.InvokeMoveEvent(MoveDirection.Left);
-                break;
-            case InputTracker.SwipeDirection.Right:
-                _inputReader.InvokeMoveEvent(MoveDirection.Right);
-                break;
+            _inputTracker.OnInput += SendInput;
         }
 
-        if (_enableLogging)
-            _logger.Log(direction);
+        private void OnDisable()
+        {
+            _inputTracker.OnInput -= SendInput;
+        }
+
+        private void Update()
+        {
+            _inputTracker.TrackInput();
+        }
+
+        private void SendInput(InputTracker.SwipeDirection direction)
+        {
+            switch (direction)
+            {
+                case InputTracker.SwipeDirection.Up:
+                    _inputReader.InvokeJumpEvent();
+                    break;
+                case InputTracker.SwipeDirection.Down:
+                    _inputReader.InvokeSlideEvent();
+                    break;
+                case InputTracker.SwipeDirection.Left:
+                    _inputReader.InvokeMoveEvent(MoveDirection.Left);
+                    break;
+                case InputTracker.SwipeDirection.Right:
+                    _inputReader.InvokeMoveEvent(MoveDirection.Right);
+                    break;
+            }
+
+            if (_enableLogging)
+                _logger.Log(direction);
+        }
     }
 }
