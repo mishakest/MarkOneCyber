@@ -9,7 +9,7 @@ namespace MarkOne.StateMachine
         public StateMachine<T> StateMachine { get; protected set; }
         public abstract Animator Animator { get; }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             StateMachine = new StateMachine<T>();
         }

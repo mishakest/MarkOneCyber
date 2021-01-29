@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f32b49c36f5ee40ba590585df7adc7, type: 3}
-  m_Name: IsGroundedCondition
+  m_Script: {fileID: 11500000, guid: ef22466c6e1c21f428e07fbcd1e1f7a4, type: 3}
+  m_Name: Cyber
   m_EditorClassIdentifier: 
-  cacheResult: 1
+  ProtagonistPrefab: {fileID: 3042646379308622525, guid: 9ada02ad9b4be384ca5b12ceeacb117b, type: 3}

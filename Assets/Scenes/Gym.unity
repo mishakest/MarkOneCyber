@@ -62503,7 +62503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnEventChannel: {fileID: 11400000, guid: cd1dfdd1237f94e4ebaf7668d43d2436, type: 2}
-  ProtagonistToSpawn: {fileID: 11400000, guid: 15a5bee62aef5424590dda7920f8602c, type: 2}
+  ProtagonistToSpawn: {fileID: 11400000, guid: 44f6506025b0fa343964dcc502b5cdab, type: 2}
 --- !u!4 &1196245182
 Transform:
   m_ObjectHideFlags: 0
@@ -87079,6 +87079,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3eead5c3f12954b8fa4e0dd07842cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 44ef24e90d8608240b007bd7c2e02524, type: 2}
+  _preferences: {fileID: 11400000, guid: aa1709dcd1a5f5846b122787a0f31aa8, type: 2}
+  _data: {fileID: 11400000, guid: 4498c43b837bede429a51157e1ce38a7, type: 2}
+  _statusEventChannel: {fileID: 11400000, guid: 1d6d2413b72244641bf3c02baa98ab4f, type: 2}
+  _spawnEventChannel: {fileID: 11400000, guid: cd1dfdd1237f94e4ebaf7668d43d2436, type: 2}
 --- !u!54 &1661522921
 Rigidbody:
   m_ObjectHideFlags: 0

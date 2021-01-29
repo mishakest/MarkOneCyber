@@ -9,7 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4295dbc3975ddf846bf65fa427fd8f3b, type: 3}
-  m_Name: GroundGravityAction
+  m_Script: {fileID: 11500000, guid: de1302cac4f0610419e77923e6015973, type: 3}
+  m_Name: ProtagonistData
   m_EditorClassIdentifier: 
-  _gravityModifier: 2
+  LaneChangeSpeed: 9
+  JumpForce: 7
+  JumpToSlideForce: 3
+  StayColliderHeight: 1.9
+  SlideCollierHeight: 1.1
+  LaneOffset: 1.66667
+  AnimatorMultiplier: 1
