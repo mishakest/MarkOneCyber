@@ -21,11 +21,16 @@ public class Protagonist : Actor<Protagonist>
     [SerializeField] private ProtagonistStatusEventChannelSO _statusEventChannel = default;
     [SerializeField] private CharacterSpawnEventChannelSO _spawnEventChannel = default;
 
+    [Header("Checks")]
+    [SerializeField] private Transform _groundCheck = default;
+
     public bool JumpInput { get; private set; }
     public bool SlideInput { get; private set; }
     public InputReader.MoveDirection MoveInput { get; private set; }
 
     public Lane CurrentLane { get; set; }
+    public float LanePoisition { get; set; }
+    public Vector3 TargetPosition { get; set; }
     public bool IsDead { get; private set; }
 
     public CapsuleCollider Collider { get; private set; }
@@ -61,7 +66,7 @@ public class Protagonist : Actor<Protagonist>
         Rigidbody = GetComponent<Rigidbody>();
         IsDead = false;
 
-        StateMachine.Init(StatesTable.MoveState);
+        StateMachine.Init(StatesTable.RunState);
     }
 
     private void OnJumpInput() => JumpInput = true;
@@ -71,4 +76,9 @@ public class Protagonist : Actor<Protagonist>
     public void UseSlideInput() => SlideInput = false;
     public void UseJumpInput() => JumpInput = false;
     public void UseMoveInput() => MoveInput = InputReader.MoveDirection.None;
+
+    public bool CheckIsTouchingGround()
+    {
+        return Physics.CheckSphere(_groundCheck.position, Data.GroundCheckRadius, Data.WhatIsGround);
+    }
 }

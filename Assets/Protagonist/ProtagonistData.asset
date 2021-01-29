@@ -17,5 +17,9 @@ MonoBehaviour:
   JumpToSlideForce: 3
   StayColliderHeight: 1.9
   SlideCollierHeight: 1.1
+  GroundCheckRadius: 0.3
+  WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
   LaneOffset: 1.66667
   AnimatorMultiplier: 1

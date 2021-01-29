@@ -50421,7 +50421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957584027}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1661522923}
@@ -87084,6 +87084,7 @@ MonoBehaviour:
   _data: {fileID: 11400000, guid: 4498c43b837bede429a51157e1ce38a7, type: 2}
   _statusEventChannel: {fileID: 11400000, guid: 1d6d2413b72244641bf3c02baa98ab4f, type: 2}
   _spawnEventChannel: {fileID: 11400000, guid: cd1dfdd1237f94e4ebaf7668d43d2436, type: 2}
+  _groundCheck: {fileID: 957584028}
 --- !u!54 &1661522921
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -10,10 +10,13 @@ namespace MarkOne.StateMachine
         {
             CurrentState = initialState;
             CurrentState.OnStateEnter();
+
         }
 
         public void ChangeState(State<T> newState)
         {
+            Debug.Log($"{CurrentState} -> {newState}");
+
             CurrentState.OnStateExit();
             CurrentState = newState;
             CurrentState.OnStateEnter();
