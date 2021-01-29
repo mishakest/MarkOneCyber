@@ -7,6 +7,7 @@ namespace MarkOne.StateMachine
     public abstract class Actor<T> : MonoBehaviour where T : Actor<T>
     {
         public StateMachine<T> StateMachine { get; protected set; }
+        public abstract Animator Animator { get; }
 
         private void Awake()
         {

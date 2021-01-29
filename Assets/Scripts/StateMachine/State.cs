@@ -21,9 +21,13 @@ namespace MarkOne.StateMachine
         {
             CheckConditions();
             StateEnterTime = Time.time;
+            Actor.Animator.SetBool(_animationName, true);
         }
 
-        public virtual void OnStateExit() { }
+        public virtual void OnStateExit() 
+        {
+            Actor.Animator.SetBool(_animationName, false);
+        }
         public virtual void OnStateUpdate() { }
         public virtual void OnStateFixedUpdate() 
         {
