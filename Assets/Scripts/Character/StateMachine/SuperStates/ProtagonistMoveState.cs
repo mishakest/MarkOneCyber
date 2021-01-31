@@ -14,6 +14,8 @@ public class ProtagonistMoveState : State<Protagonist>
     {
         base.OnStateUpdate();
 
+        actor.Animator.SetFloat("yVelocity", actor.Rigidbody.velocity.y);
+
         actor.TargetPosition = new Vector3()
         {
             x = actor.LanePoisition,

@@ -18,9 +18,10 @@ public class ProtagonistJumpState : ProtagonistMoveState
     {
         base.OnStateUpdate();
 
-        if (isGrounded && actor.Rigidbody.velocity.y < 0.01f)
+        if (actor.IsAnimationEnded)
         {
-            stateMachine.ChangeState(actor.StatesTable.RunState);
+            actor.UseAnimation();
+            stateMachine.ChangeState(actor.StatesTable.InAirState);
         }
         else if (actor.SlideInput)
         {
