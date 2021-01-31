@@ -929,6 +929,7 @@ GameObject:
   - component: {fileID: 3042646379308622526}
   - component: {fileID: 3042646379308622524}
   - component: {fileID: 3042646379308622525}
+  - component: {fileID: -6726143480962739134}
   m_Layer: 0
   m_Name: Cyber
   m_TagString: Untagged
@@ -985,6 +986,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 3042646379308622524}
   Icon: {fileID: 0}
+--- !u!114 &-6726143480962739134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3042646379308622527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b49f501ac0a2394c80352fec6214fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationChannel: {fileID: 11400000, guid: ce2ceffaf669317439c4a6332be0e762, type: 2}
 --- !u!1 &3042646379394889153
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: ProtagonistData
   m_EditorClassIdentifier: 
   LaneChangeSpeed: 9
-  JumpForce: 7
+  JumpForce: 10
   JumpToSlideForce: 3
+  SlideTime: 1.5
   StayColliderHeight: 1.9
   SlideCollierHeight: 1.1
   GroundCheckRadius: 0.3

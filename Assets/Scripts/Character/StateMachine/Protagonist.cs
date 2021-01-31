@@ -20,6 +20,7 @@ public class Protagonist : Actor<Protagonist>
     [Header("Event Channels")]
     [SerializeField] private ProtagonistStatusEventChannelSO _statusEventChannel = default;
     [SerializeField] private CharacterSpawnEventChannelSO _spawnEventChannel = default;
+    [SerializeField] private ChracterAnimationChannelSO _animationChannel = default;
 
     [Header("Checks")]
     [SerializeField] private Transform _groundCheck = default;
@@ -32,6 +33,7 @@ public class Protagonist : Actor<Protagonist>
     public float LanePoisition { get; set; }
     public Vector3 TargetPosition { get; set; }
     public bool IsDead { get; private set; }
+    public bool IsAnimationEnded { get; private set; }
 
     public CapsuleCollider Collider { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
@@ -43,6 +45,7 @@ public class Protagonist : Actor<Protagonist>
         _inputReader.JumpEvent += OnJumpInput;
         _inputReader.SlideEvent += OnSlideInput;
         _inputReader.MoveEvent += OnMove;
+        _animationChannel.OnAnimationEnded += EndAnimation;
     }
 
     private void OnDisable()
@@ -50,6 +53,7 @@ public class Protagonist : Actor<Protagonist>
         _inputReader.JumpEvent -= OnJumpInput;
         _inputReader.SlideEvent -= OnSlideInput;
         _inputReader.MoveEvent -= OnMove;
+        _animationChannel.OnAnimationEnded -= EndAnimation;
     }
 
     protected override void Awake()
@@ -76,6 +80,9 @@ public class Protagonist : Actor<Protagonist>
     public void UseSlideInput() => SlideInput = false;
     public void UseJumpInput() => JumpInput = false;
     public void UseMoveInput() => MoveInput = InputReader.MoveDirection.None;
+    public void UseAnimation() => IsAnimationEnded = false;
+
+    private void EndAnimation() => IsAnimationEnded = true;
 
     public bool CheckIsTouchingGround()
     {
