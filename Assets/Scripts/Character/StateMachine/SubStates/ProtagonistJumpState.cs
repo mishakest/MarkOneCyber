@@ -18,21 +18,19 @@ public class ProtagonistJumpState : ProtagonistMoveState
     {
         base.OnStateUpdate();
 
-        if (actor.IsAnimationEnded)
-        {
-            actor.UseAnimation();
-            stateMachine.ChangeState(actor.StatesTable.InAirState);
-        }
-        else if (actor.SlideInput)
+        if (actor.SlideInput)
         {
             actor.UseSlideInput();
             stateMachine.ChangeState(actor.StatesTable.SlideState);
+        }
+        else
+        {
+            stateMachine.ChangeState(actor.StatesTable.InAirState);
         }
     }
 
     private void PerformJump()
     {
-        var velocity = actor.Rigidbody.velocity;
         actor.Rigidbody.velocity = new Vector3(0.0f, actor.Data.JumpForce, 0.0f);
     }
 }

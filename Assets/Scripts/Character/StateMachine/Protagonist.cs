@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using MarkOne.StateMachine;
 using MarkOne.Input;
 using Lane = ProtagonistMoveState.Lane;
+using Extensions;
 
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class Protagonist : Actor<Protagonist>
@@ -30,7 +32,7 @@ public class Protagonist : Actor<Protagonist>
     public InputReader.MoveDirection MoveInput { get; private set; }
 
     public Lane CurrentLane { get; set; }
-    public float LanePoisition { get; set; }
+    public float LanePosition { get; set; }
     public Vector3 TargetPosition { get; set; }
     public bool IsDead { get; private set; }
     public bool IsAnimationEnded { get; private set; }
@@ -71,6 +73,14 @@ public class Protagonist : Actor<Protagonist>
         IsDead = false;
 
         StateMachine.Init(StatesTable.RunState);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        other.gameObject.HandleComponent<Obstacle>(obstacle =>
+        {
+            _statusEventChannel.RaiseEvent(true);
+        });
     }
 
     private void OnJumpInput() => JumpInput = true;

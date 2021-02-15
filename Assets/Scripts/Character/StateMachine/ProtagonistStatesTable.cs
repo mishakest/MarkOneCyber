@@ -15,7 +15,7 @@ public class ProtagonistStatesTable : StatesTable<Protagonist>
     public override void Init()
     {
         RunState = new ProtagonistRunState(Actor, StateMachine, "run");
-        JumpState = new ProtagonistJumpState(Actor, StateMachine, "inAir");
+        JumpState = new ProtagonistJumpState(Actor, StateMachine, "jump");
         InAirState = new ProtagonistInAirState(Actor, StateMachine, "inAir");
         LandState = new ProtagonistLandState(Actor, StateMachine, "land");
         SlideState = new ProtagonistSlideState(Actor, StateMachine, "slide");

@@ -18,7 +18,7 @@ public class ProtagonistMoveState : State<Protagonist>
 
         actor.TargetPosition = new Vector3()
         {
-            x = actor.LanePoisition,
+            x = actor.LanePosition,
             y = actor.transform.position.y,
             z = actor.transform.position.z
         };
@@ -48,7 +48,7 @@ public class ProtagonistMoveState : State<Protagonist>
         }
 
         actor.CurrentLane = targetLane;
-        actor.LanePoisition = (int)actor.CurrentLane * actor.Preferences.LaneOffset;
+        actor.LanePosition = (int)actor.CurrentLane * actor.Preferences.LaneOffset;
     }
 
     private void ApplyMovement()

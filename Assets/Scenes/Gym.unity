@@ -53752,7 +53752,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1032661888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.203711, y: -7.601124, z: 64.3909}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57022,7 +57022,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087385156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57.59915, y: -777.8974, z: 506.35287}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63553,7 +63553,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227359236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57.59915, y: -777.8974, z: 506.35287}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -74133,7 +74133,34 @@ MonoBehaviour:
     m_RotationOrder: 4
   _movingObjectsMultiplierCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.3019737
+      outSlope: 0.3019737
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4875607
+      value: 0.1472305
+      inSlope: 0.710248
+      outSlope: 0.710248
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.28214067
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1.6641375
+      outSlope: 1.6641375
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -87084,6 +87111,7 @@ MonoBehaviour:
   _data: {fileID: 11400000, guid: 4498c43b837bede429a51157e1ce38a7, type: 2}
   _statusEventChannel: {fileID: 11400000, guid: 1d6d2413b72244641bf3c02baa98ab4f, type: 2}
   _spawnEventChannel: {fileID: 11400000, guid: cd1dfdd1237f94e4ebaf7668d43d2436, type: 2}
+  _animationChannel: {fileID: 11400000, guid: ce2ceffaf669317439c4a6332be0e762, type: 2}
   _groundCheck: {fileID: 957584028}
 --- !u!54 &1661522921
 Rigidbody:
