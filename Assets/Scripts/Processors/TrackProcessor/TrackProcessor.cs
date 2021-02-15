@@ -41,12 +41,12 @@ public class TrackProcessor : MonoBehaviour
 
     private void Update()
     {
-        if (!_isStopped)
-        {
-            ApplyChunksMovement();
-            ChangeCurrentSpeed();
-            ChangeAnimatorMultiplier();
-        }
+        if (_isStopped) 
+            return;
+
+        ApplyChunksMovement();
+        ChangeCurrentSpeed();
+        ChangeAnimatorMultiplier();
     }
 
     private void ApplyChunksMovement()

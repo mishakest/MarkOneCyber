@@ -50421,7 +50421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957584027}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1661522923}
@@ -53752,7 +53752,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1032661888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.203711, y: -7.601124, z: 64.3909}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57022,7 +57022,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087385156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57.59915, y: -777.8974, z: 506.35287}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -62503,7 +62503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnEventChannel: {fileID: 11400000, guid: cd1dfdd1237f94e4ebaf7668d43d2436, type: 2}
-  ProtagonistToSpawn: {fileID: 11400000, guid: 15a5bee62aef5424590dda7920f8602c, type: 2}
+  ProtagonistToSpawn: {fileID: 11400000, guid: 44f6506025b0fa343964dcc502b5cdab, type: 2}
 --- !u!4 &1196245182
 Transform:
   m_ObjectHideFlags: 0
@@ -63553,7 +63553,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227359236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57.59915, y: -777.8974, z: 506.35287}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -74133,7 +74133,34 @@ MonoBehaviour:
     m_RotationOrder: 4
   _movingObjectsMultiplierCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.3019737
+      outSlope: 0.3019737
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4875607
+      value: 0.1472305
+      inSlope: 0.710248
+      outSlope: 0.710248
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.28214067
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1.6641375
+      outSlope: 1.6641375
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -87060,8 +87087,6 @@ GameObject:
   - component: {fileID: 1661522922}
   - component: {fileID: 1661522921}
   - component: {fileID: 1661522920}
-  - component: {fileID: 1661522924}
-  - component: {fileID: 1661522925}
   m_Layer: 0
   m_Name: Protagonist
   m_TagString: Untagged
@@ -87078,19 +87103,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1661522919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da19c11da37272740baf58a3e15d69cb, type: 3}
+  m_Script: {fileID: 11500000, guid: ff3eead5c3f12954b8fa4e0dd07842cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 44ef24e90d8608240b007bd7c2e02524, type: 2}
   _preferences: {fileID: 11400000, guid: aa1709dcd1a5f5846b122787a0f31aa8, type: 2}
+  _data: {fileID: 11400000, guid: 4498c43b837bede429a51157e1ce38a7, type: 2}
   _statusEventChannel: {fileID: 11400000, guid: 1d6d2413b72244641bf3c02baa98ab4f, type: 2}
   _spawnEventChannel: {fileID: 11400000, guid: cd1dfdd1237f94e4ebaf7668d43d2436, type: 2}
-  _blobShadow: {fileID: 850536824}
+  _animationChannel: {fileID: 11400000, guid: ce2ceffaf669317439c4a6332be0e762, type: 2}
   _groundCheck: {fileID: 957584028}
-  _whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  _groundCheckRadius: 0.2
 --- !u!54 &1661522921
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -87138,36 +87160,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1661522924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661522919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 653d5d9c0072206479d54d09850c3b22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transitionTableSO: {fileID: 11400000, guid: ccf04d6f56e72c549932de482114c821, type: 2}
-  debugger:
-    debugTransitions: 1
-    appendConditionsInfo: 1
-    appendActionsInfo: 1
-    currentState: 
---- !u!114 &1661522925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661522919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ca02e5bfbea0e640843e8618a5569d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1662558573
 GameObject:
   m_ObjectHideFlags: 0
