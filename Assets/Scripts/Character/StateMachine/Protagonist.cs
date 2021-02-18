@@ -20,7 +20,6 @@ public class Protagonist : Actor<Protagonist>
     [SerializeField] private ProtagonistDataSO _data = default;
 
     [Header("Event Channels")]
-    [SerializeField] private ProtagonistStatusEventChannelSO _statusEventChannel = default;
     [SerializeField] private CharacterSpawnEventChannelSO _spawnEventChannel = default;
     [SerializeField] private ChracterAnimationChannelSO _animationChannel = default;
 
@@ -73,14 +72,6 @@ public class Protagonist : Actor<Protagonist>
         IsDead = false;
 
         StateMachine.Init(StatesTable.RunState);
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        other.gameObject.HandleComponent<Obstacle>(obstacle =>
-        {
-            _statusEventChannel.RaiseEvent(true);
-        });
     }
 
     private void OnJumpInput() => JumpInput = true;

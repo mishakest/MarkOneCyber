@@ -13,7 +13,7 @@ public class ProtagonistInAirState : ProtagonistMoveState
     {
         base.OnStateUpdate();
 
-        if (isGrounded && actor.Rigidbody.velocity.y < 0.01f)
+        if (isGrounded)
         {
             stateMachine.ChangeState(actor.StatesTable.RunState);
         }
