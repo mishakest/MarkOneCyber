@@ -1,18 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using MarkOne.Interfaces;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class Coin : MonoBehaviour, IMoveable
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Move(Vector3 direction)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        transform.position += direction * Time.deltaTime;
     }
 }
