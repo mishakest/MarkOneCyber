@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using MarkOne.Interfaces;
 using UnityEngine;
 
-public class Chunk : MonoBehaviour
+public class Chunk : MonoBehaviour, IMoveable
 {
     [Header("Bounds")]
     public Transform StartPoint;
