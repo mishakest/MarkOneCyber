@@ -31655,6 +31655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c897ecac4c96f74fbb68ad3e25a824c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _provider: {fileID: 11400000, guid: 374919bcce712534db0c9d440c110a4c, type: 2}
   _player: {fileID: 1661522923}
   _chunksPool: {fileID: 1612415593}
   _startingChunk: {fileID: 270508012091921522}
@@ -48104,96 +48105,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1413289500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 937bbe1c7856ac4458d609796b09518c, type: 3}
+  m_Script: {fileID: 11500000, guid: b9be2ed606634c5499eefd9b9f846c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _provider: {fileID: 11400000, guid: 374919bcce712534db0c9d440c110a4c, type: 2}
   _data: {fileID: 11400000, guid: d21241bf579f842449edacc425ae5f60, type: 2}
   _protagonistPreferences: {fileID: 11400000, guid: aa1709dcd1a5f5846b122787a0f31aa8, type: 2}
   _protagonistStatus: {fileID: 11400000, guid: 1d6d2413b72244641bf3c02baa98ab4f, type: 2}
-  _chunkPlacer: {fileID: 925366263}
-  _destroyObstaclesRadius: 6
-  _speedMutiplierCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0.016666668
-      outSlope: 0.016666668
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 120
-      value: 3
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _animationMultiplierCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0.004166667
-      outSlope: 0.004166667
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 120
-      value: 1.5
-      inSlope: 0.004166667
-      outSlope: 0.004166667
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _movingObjectsMultiplierCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0.3019737
-      outSlope: 0.3019737
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.4875607
-      value: 0.1472305
-      inSlope: 0.710248
-      outSlope: 0.710248
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.28214067
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1.6641375
-      outSlope: 1.6641375
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _drawGizmos: 1
 --- !u!1 &1418148028
 GameObject:
   m_ObjectHideFlags: 0

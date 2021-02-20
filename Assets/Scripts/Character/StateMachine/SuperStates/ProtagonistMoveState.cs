@@ -48,7 +48,7 @@ public class ProtagonistMoveState : State<Protagonist>
         }
 
         actor.CurrentLane = targetLane;
-        actor.LanePosition = (int)actor.CurrentLane * actor.Preferences.LaneOffset;
+        actor.LanePosition = (int)actor.CurrentLane * actor.Data.LaneOffset;
     }
 
     private void ApplyMovement()

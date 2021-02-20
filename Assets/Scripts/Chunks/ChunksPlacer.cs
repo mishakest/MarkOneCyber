@@ -1,10 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Processors;
 using UnityEngine;
 
 #pragma warning disable 0649
 public class ChunksPlacer : MonoBehaviour
 {
+    [SerializeField] private TrackProcessorProviderSO _provider = default;
+
     [SerializeField] private Transform _player;
 
     [Header("Chunks")]
@@ -21,6 +23,7 @@ public class ChunksPlacer : MonoBehaviour
     {
         SpawnedChunks = new List<Chunk>();
         SpawnedChunks.Add(_startingChunk);
+        _provider.ChunksMoveables.Add(_startingChunk);
     }
 
     private void Update()
@@ -40,6 +43,7 @@ public class ChunksPlacer : MonoBehaviour
         chunk.gameObject.SetActive(true);
         chunk.transform.position = GetLastChunk().EndPoint.position - chunk.StartPoint.localPosition;
         SpawnedChunks.Add(chunk);
+        _provider.ChunksMoveables.Add(chunk);
     }
 
     private void DistinctChunk()
@@ -52,12 +56,14 @@ public class ChunksPlacer : MonoBehaviour
             if (chunk.gameObject == onRunChunk.gameObject)
             {
                 SpawnedChunks.RemoveAt(0);
+                _provider.ChunksMoveables.RemoveAt(0);
                 _chunksPool.DestroyCreatedChunk(chunk);
                 return;
             }
         }
 
         SpawnedChunks.RemoveAt(0);
+        _provider.ChunksMoveables.RemoveAt(0);
     }
 
     private Chunk GetLastChunk() => SpawnedChunks[SpawnedChunks.Count - 1];
