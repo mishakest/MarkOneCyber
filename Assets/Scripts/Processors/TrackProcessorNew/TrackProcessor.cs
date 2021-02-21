@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
 using MarkOne.Interfaces;
 using UnityEngine;
 
@@ -11,10 +13,32 @@ namespace Processors
 
         [Space] 
         [SerializeField] private ProtagonistPreferencesSO _protagonistPreferences = default;
-        [SerializeField] private ProtagonistStatusEventChannelSO _protagonistStatus = default; 
-        
+        [SerializeField] private ProtagonistStatusEventChannelSO _protagonistStatus = default;
+
+        private bool _isStopped = false;
+
+        private void OnEnable()
+        {
+            _protagonistStatus.OnProtagonistDeath += StopMoving;
+            _protagonistStatus.OnProtagonistRevive += ContinueMoving;
+        }
+
+        private void OnDisable()
+        {
+            _protagonistStatus.OnProtagonistDeath -= StopMoving;
+            _protagonistStatus.OnProtagonistRevive += ContinueMoving;
+        }
+
+        private void Start()
+        {
+            _isStopped = false;
+        }
+
         private void Update()
         {
+            if (_isStopped)
+                return;
+
             ApplyMovement(_provider.ChunksMoveables, _data.ChunksMoveablesMultiplier);
             ApplyMovement(_provider.DynamicMoveables, _data.DynamicMoveablesMultiplier);
         }
@@ -26,6 +50,16 @@ namespace Processors
                 var speed = _data.StartingSpeed * multiplier.Evaluate(Time.time);
                 moveable.Move(Vector3.back * speed);
             }
+        }
+
+        private void StopMoving()
+        {
+            _isStopped = true;
+        }
+
+        private void ContinueMoving()
+        {
+            _isStopped = false;
         }
     }
 }

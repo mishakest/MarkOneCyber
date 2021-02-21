@@ -11,7 +11,10 @@ public class ProtagonistDataSO : ScriptableObject
     public float StayColliderHeight = 1.9f;
     public float SlideCollierHeight = 1.1f;
 
+    public float DestroyObstaclesRadius = 4.0f;
+
     public float GroundCheckRadius = 0.2f;
+    public float CollisionsCheckRadius = 0.25f;
     public LayerMask WhatIsGround = default;
 
     [HideInInspector] public float LaneOffset = 1.66667f;

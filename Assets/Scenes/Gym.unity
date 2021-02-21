@@ -26789,7 +26789,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787594544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1661522923}
@@ -56699,7 +56699,6 @@ GameObject:
   - component: {fileID: 1661522922}
   - component: {fileID: 1661522921}
   - component: {fileID: 1661522920}
-  - component: {fileID: 1661522924}
   m_Layer: 0
   m_Name: Protagonist
   m_TagString: Untagged
@@ -56724,7 +56723,9 @@ MonoBehaviour:
   _data: {fileID: 11400000, guid: 4498c43b837bede429a51157e1ce38a7, type: 2}
   _spawnEventChannel: {fileID: 11400000, guid: cd1dfdd1237f94e4ebaf7668d43d2436, type: 2}
   _animationChannel: {fileID: 11400000, guid: ce2ceffaf669317439c4a6332be0e762, type: 2}
+  _statusChannel: {fileID: 11400000, guid: 1d6d2413b72244641bf3c02baa98ab4f, type: 2}
   _groundCheck: {fileID: 957584028}
+  _collisionsCheck: {fileID: 787594545}
 --- !u!54 &1661522921
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -56773,22 +56774,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1661522924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661522919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa7f7983a67846068d3c386156973aca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _statusChannel: {fileID: 11400000, guid: 1d6d2413b72244641bf3c02baa98ab4f, type: 2}
-  _checkOrigins:
-  - {fileID: 787594545}
-  _raycastDistance: 1
 --- !u!1 &1661757526
 GameObject:
   m_ObjectHideFlags: 0

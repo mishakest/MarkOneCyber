@@ -1,16 +1,16 @@
 ﻿using System;
+using Extensions;
 using UnityEngine;
 using MarkOne.StateMachine;
 using MarkOne.Input;
 using Lane = ProtagonistMoveState.Lane;
-using Extensions;
+using MarkOne.Interfaces;
 
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class Protagonist : Actor<Protagonist>
 {
     public Character Character { get; private set; }
     public override Animator Animator => Character.Animator;
-    public ProtagonistPreferencesSO Preferences => _preferences;
     public ProtagonistDataSO Data => _data;
 
     [SerializeField] private InputReader _inputReader = default;
@@ -22,9 +22,11 @@ public class Protagonist : Actor<Protagonist>
     [Header("Event Channels")]
     [SerializeField] private CharacterSpawnEventChannelSO _spawnEventChannel = default;
     [SerializeField] private ChracterAnimationChannelSO _animationChannel = default;
+    [SerializeField] private ProtagonistStatusEventChannelSO _statusChannel = default;
 
     [Header("Checks")]
     [SerializeField] private Transform _groundCheck = default;
+    [SerializeField] private Transform _collisionsCheck = default;
 
     public bool JumpInput { get; private set; }
     public bool SlideInput { get; private set; }
@@ -33,7 +35,6 @@ public class Protagonist : Actor<Protagonist>
     public Lane CurrentLane { get; set; }
     public float LanePosition { get; set; }
     public Vector3 TargetPosition { get; set; }
-    public bool IsDead { get; private set; }
     public bool IsAnimationEnded { get; private set; }
 
     public CapsuleCollider Collider { get; private set; }
@@ -47,6 +48,7 @@ public class Protagonist : Actor<Protagonist>
         _inputReader.SlideEvent += OnSlideInput;
         _inputReader.MoveEvent += OnMove;
         _animationChannel.OnAnimationEnded += EndAnimation;
+        _statusChannel.OnProtagonistRevive += Revive;
     }
 
     private void OnDisable()
@@ -55,6 +57,7 @@ public class Protagonist : Actor<Protagonist>
         _inputReader.SlideEvent -= OnSlideInput;
         _inputReader.MoveEvent -= OnMove;
         _animationChannel.OnAnimationEnded -= EndAnimation;
+        _statusChannel.OnProtagonistRevive -= Revive;
     }
 
     protected override void Awake()
@@ -69,9 +72,42 @@ public class Protagonist : Actor<Protagonist>
         Character = GetComponentInChildren<Character>();
         Collider = GetComponent<CapsuleCollider>();
         Rigidbody = GetComponent<Rigidbody>();
-        IsDead = false;
 
         StateMachine.Init(StatesTable.RunState);
+    }
+
+    private void FixedUpdate()
+    {
+        HandleCollisions(hit =>
+        {
+            Debug.Log("Hit");
+            _statusChannel.RaiseEvent(true);
+        });
+    }
+
+    private void HandleCollisions(Action<IHitable> handler)
+    {
+        var colliders = Physics.OverlapSphere(_collisionsCheck.position, _data.CollisionsCheckRadius);
+        foreach (var collider in colliders)
+        {
+            var hit = collider.gameObject.GetComponent<Obstacle>();
+            if (hit != null)
+                handler?.Invoke(hit);
+        }
+    }
+
+    private void Revive()
+    {
+        DestroyObstaclesAround(_data.DestroyObstaclesRadius);
+    }
+
+    private void DestroyObstaclesAround(float radius)
+    {
+        var colliders = Physics.OverlapSphere(this.transform.position, radius);
+        foreach (var collider in colliders)
+        {
+            collider.gameObject.HandleComponent<Obstacle>(obstacle => obstacle.Destroy());
+        }
     }
 
     private void OnJumpInput() => JumpInput = true;

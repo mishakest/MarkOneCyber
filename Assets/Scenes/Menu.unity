@@ -1906,13 +1906,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6011077482713888399}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b54c7a0d4a4774845b19c7465e625682, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loadEventChannel: {fileID: 11400000, guid: e0dd0b3ea1a3b354ca44a10ed5949110, type: 2}
-  _locationsToLoad:
-  - {fileID: 11400000, guid: e738182134f5edc4d919900010159e09, type: 2}
-  _enableLoadingScreen: 0
 --- !u!1 &6011077482713888399
 GameObject:
   m_ObjectHideFlags: 0
