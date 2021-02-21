@@ -56788,7 +56788,7 @@ MonoBehaviour:
   _statusChannel: {fileID: 11400000, guid: 1d6d2413b72244641bf3c02baa98ab4f, type: 2}
   _checkOrigins:
   - {fileID: 787594545}
-  _raycastDistance: 0.5
+  _raycastDistance: 1
 --- !u!1 &1661757526
 GameObject:
   m_ObjectHideFlags: 0

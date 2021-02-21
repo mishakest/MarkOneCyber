@@ -28,7 +28,7 @@ public class ProtagonistCollisions : MonoBehaviour
 
     private void HandleRaycast(Transform origin, Action<RaycastHit> handler)
     {
-        var success = Physics.Raycast(origin.position, origin.localPosition + Vector3.forward * _raycastDistance,
+        var success = Physics.Raycast(origin.position, origin.position + Vector3.forward * _raycastDistance,
             out var hit);
 
         if (success)
@@ -39,7 +39,7 @@ public class ProtagonistCollisions : MonoBehaviour
     {
         foreach (var origin in _checkOrigins)
         {
-            Gizmos.DrawLine(origin.position, origin.localPosition + Vector3.forward * _raycastDistance);
+            Gizmos.DrawLine(origin.position, origin.position + Vector3.forward * _raycastDistance);
         }
     }
 }
