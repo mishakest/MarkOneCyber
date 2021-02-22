@@ -13,7 +13,7 @@ public class ChunksPlacer : MonoBehaviour
 
     [SerializeField] private int _maxChunksOnScene = 3;
 
-    private List<Chunk> _spawnedChunks = new List<Chunk>();
+    private readonly List<Chunk> _spawnedChunks = new List<Chunk>();
 
     private void Start()
     {
