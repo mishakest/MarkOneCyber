@@ -1,70 +1,137 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Processors;
 using UnityEngine;
 
-#pragma warning disable 0649
 public class ChunksPlacer : MonoBehaviour
 {
     [SerializeField] private TrackProcessorProviderSO _provider = default;
+    
+    [SerializeField] private Chunk _startingChunk = default;
+    [SerializeField] private ChunksPool _chunksPool = default;
 
-    [SerializeField] private Transform _player;
-
-    [Header("Chunks")]
-    [SerializeField] private ChunksPool _chunksPool;
-    [SerializeField] private Chunk _startingChunk;
-
-    [Header("Preferences")]
-    [SerializeField] private float _prespawnDistance = 150.0f;
     [SerializeField] private int _maxChunksOnScene = 3;
 
-    public List<Chunk> SpawnedChunks { get; private set; }
+    private List<Chunk> _spawnedChunks = new List<Chunk>();
 
     private void Start()
     {
-        SpawnedChunks = new List<Chunk>();
-        SpawnedChunks.Add(_startingChunk);
-        _provider.ChunksMoveables.Add(_startingChunk);
+        AddChunk(_startingChunk);
     }
 
     private void Update()
     {
-        if (_player.position.z > GetLastChunk().EndPoint.position.z - _prespawnDistance)
-        {
-            SpawnChunk();
-        }
+        if (_spawnedChunks.Count < _maxChunksOnScene)
+            PlaceChunk();
 
-        if (SpawnedChunks.Count > _maxChunksOnScene)
+        if (_spawnedChunks.First().EndPoint.position.z < -10.0f)
             DistinctChunk();
     }
 
-    private void SpawnChunk()
+    private void AddChunk(Chunk chunk)
     {
-        var chunk = _chunksPool.GetChunk();
-        chunk.gameObject.SetActive(true);
-        chunk.transform.position = GetLastChunk().EndPoint.position - chunk.StartPoint.localPosition;
-        SpawnedChunks.Add(chunk);
         _provider.ChunksMoveables.Add(chunk);
+        _spawnedChunks.Add(chunk);
+    }
+
+    private void RemoveChunk(Chunk chunk)
+    {
+        _provider.ChunksMoveables.Remove(chunk);
+        _spawnedChunks.Remove(chunk);
+    }
+
+    private void PlaceChunk()
+    {
+        var chunk = _chunksPool.Request();
+        chunk.gameObject.SetActive(true);
+        chunk.transform.position = GetConnectionPointPosition(chunk);
+        AddChunk(chunk);
     }
 
     private void DistinctChunk()
     {
-        var chunk = SpawnedChunks[0];
+        var chunk = _spawnedChunks[0];
         chunk.gameObject.SetActive(false);
 
-        foreach (var onRunChunk in _chunksPool.CreatedOnRunChunks)
+        if (_chunksPool.CreatedOnRunChunks.Any(onRunChunk => chunk.gameObject == onRunChunk.gameObject))
         {
-            if (chunk.gameObject == onRunChunk.gameObject)
-            {
-                SpawnedChunks.RemoveAt(0);
-                _provider.ChunksMoveables.RemoveAt(0);
-                _chunksPool.DestroyCreatedChunk(chunk);
-                return;
-            }
+            RemoveChunk(chunk);
+            _chunksPool.DestroyCreatedChunk(chunk);
+            return;
         }
 
-        SpawnedChunks.RemoveAt(0);
-        _provider.ChunksMoveables.RemoveAt(0);
+        RemoveChunk(chunk);
     }
 
-    private Chunk GetLastChunk() => SpawnedChunks[SpawnedChunks.Count - 1];
+    private Vector3 GetConnectionPointPosition(Chunk currentChunk)
+    {
+        return _spawnedChunks.Last().EndPoint.position - currentChunk.StartPoint.localPosition;
+    }
 }
+
+//public class ChunksPlacers : MonoBehaviour
+//{
+//    [SerializeField] private TrackProcessorProviderSO _provider = default;
+
+//    [SerializeField] private Transform _player;
+
+//    [Header("Chunks")]
+//    [SerializeField] private ChunksPool _chunksPool;
+//    [SerializeField] private Chunk _startingChunk;
+
+//    [Header("Preferences")]
+//    [SerializeField] private float _prespawnDistance = 150.0f;
+//    [SerializeField] private int _maxChunksOnScene = 3;
+
+//    public List<Chunk> SpawnedChunks { get; private set; }
+
+//    private void Start()
+//    {
+//        SpawnedChunks = new List<Chunk>();
+//        SpawnedChunks.Add(_startingChunk);
+//        _provider.ChunksMoveables.Add(_startingChunk);
+//    }
+
+//    private void Update()
+//    {
+//        if (_player.position.z > GetLastChunk().EndPoint.position.z - _prespawnDistance)
+//        {
+//            SpawnChunk();
+//        }
+
+//        if (SpawnedChunks.Count > _maxChunksOnScene)
+//            DistinctChunk();
+//    }
+
+//    private void SpawnChunk()
+//    {
+//        var chunk = _chunksPool.Request();
+//        chunk.gameObject.SetActive(true);
+//        chunk.transform.position = GetLastChunk().EndPoint.position - chunk.StartPoint.localPosition;
+//        SpawnedChunks.Add(chunk);
+//        _provider.ChunksMoveables.Add(chunk);
+//    }
+
+//    private void DistinctChunk()
+//    {
+//        var chunk = SpawnedChunks[0];
+//        chunk.gameObject.SetActive(false);
+
+//        foreach (var onRunChunk in _chunksPool.CreatedOnRunChunks)
+//        {
+//            if (chunk.gameObject == onRunChunk.gameObject)
+//            {
+//                SpawnedChunks.RemoveAt(0);
+//                _provider.ChunksMoveables.RemoveAt(0);
+//                _chunksPool.DestroyCreatedChunk(chunk);
+//                return;
+//            }
+//        }
+
+//        SpawnedChunks.RemoveAt(0);
+//        _provider.ChunksMoveables.RemoveAt(0);
+//    }
+
+//    private Chunk GetLastChunk() => SpawnedChunks[SpawnedChunks.Count - 1];
+//}

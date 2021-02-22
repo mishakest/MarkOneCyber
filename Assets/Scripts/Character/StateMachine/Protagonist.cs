@@ -80,12 +80,12 @@ public class Protagonist : Actor<Protagonist>
     {
         HandleCollisions(hit =>
         {
-            Debug.Log("Hit");
+            Debug.Log(hit.gameObject.name);
             _statusChannel.RaiseEvent(true);
         });
     }
 
-    private void HandleCollisions(Action<IHitable> handler)
+    private void HandleCollisions(Action<Obstacle> handler)
     {
         var colliders = Physics.OverlapSphere(_collisionsCheck.position, _data.CollisionsCheckRadius);
         foreach (var collider in colliders)

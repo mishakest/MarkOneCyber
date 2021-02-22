@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-#pragma warning disable 0649
-[ExecuteAlways]
 public class ChunksPool : MonoBehaviour
 {
     [SerializeField] private int _intances = 1;
-    [SerializeField] private List<GameObject> _chunkPrefabs;
+    [SerializeField] private List<GameObject> _chunkPrefabs = default;
 
     public List<Chunk> CreatedOnRunChunks { get; private set; }
     [HideInInspector] public List<Chunk> CreatedChunks = new List<Chunk>();
@@ -39,10 +37,10 @@ public class ChunksPool : MonoBehaviour
 
     private void Distinct()
     {
-        for (int i = 0; i < CreatedChunks.Count; ++i)
+        foreach (var chunk in CreatedChunks)
         {
 #if UNITY_EDITOR
-            DestroyImmediate(CreatedChunks[i].gameObject);
+            DestroyImmediate(chunk.gameObject);
 #else
             Destroy(CreatedChunks[i].gameObject)
 #endif
@@ -58,7 +56,7 @@ public class ChunksPool : MonoBehaviour
         Generate();
     }
 
-    public Chunk GetChunk()
+    public Chunk Request()
     {
         int index = Random.Range(0, CreatedChunks.Count);
 
@@ -108,6 +106,8 @@ public class ChunksPool : MonoBehaviour
 
     private void ApplyChunkPreferences(GameObject chunk)
     {
+        //затычка с позицией нужна, чтобы персонаж не умирал на старте из-за работы создания чанков
+        chunk.transform.position = Vector3.one * 100.0f;
         chunk.SetActive(false);
         chunk.transform.parent = transform;
     }
