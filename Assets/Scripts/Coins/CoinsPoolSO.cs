@@ -9,13 +9,7 @@ public class CoinsPoolSO : ComponentPoolSO<Coin>
 
     public override IFactory<Coin> Factory
     {
-        get
-        {
-            return _factory;
-        }
-        set
-        {
-            _factory = value as CoinFactorySO;
-        }
+        get => _factory;
+        set => _factory = value as CoinFactorySO;
     }
 }

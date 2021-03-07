@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 7628539961573089355}
   - component: {fileID: 7103817092282972910}
   - component: {fileID: 7103817092282972908}
-  - component: {fileID: 7103817092282972911}
+  - component: {fileID: -7534408193349640563}
   m_Layer: 8
   m_Name: Tram
   m_TagString: Untagged
@@ -144,7 +144,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.012338, y: 2.5191598, z: 7.538633}
   m_Center: {x: -1.0039328, y: 1.2443902, z: -3.7467115}
---- !u!114 &7103817092282972911
+--- !u!114 &-7534408193349640563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,6 +153,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7103817092282972913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 739d6d870b20b694398649b683e1324e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3efda8e7641f4f11b447aad7ed388184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
